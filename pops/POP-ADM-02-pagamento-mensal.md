@@ -45,7 +45,7 @@ colaborador e cada despesa fixa fica cadastrado uma vez no Asaas, o Pix é agend
 | **2 dias úteis antes** de cada pagamento | Agente confere se o saldo do Asaas cobre os pagamentos do dia. Se não cobrir, avisa a Dra. Laís |
 | **Dia do pagamento, 8h** | Agente manda à Dra. Laís a lista: quem recebe, valor, chave, total do dia, saldo |
 | **Até 10h** | Dra. Laís confere e aprova no Asaas com o token de segurança `[A CONFIRMAR: como o token chega — app, SMS ou outro]` |
-| **Logo após a aprovação** | Agente baixa o comprovante e salva: colaborador em `02 RH/{{nome}}/03 PAGAMENTOS/AAAA-MM_comprovante.pdf`; despesa em `03 FINANCEIRO/AAAA-MM/` |
+| **Logo após a aprovação** | Agente baixa o comprovante e salva: colaborador em `RH/{{nome}}/03_PAGAMENTOS/AAAA-MM_comprovante.pdf`; despesa em `FINANCEIRO/AAAA/MM/` |
 | **Até 18h** | Se algum pagamento falhou (chave inválida, saldo), avisar a Dra. Laís |
 | **Último dia útil do mês** | Relatório do mês: entradas, saídas, custo da equipe, despesas fixas e eventuais |
 
@@ -67,8 +67,8 @@ colaborador e cada despesa fixa fica cadastrado uma vez no Asaas, o Pix é agend
 
 ## Onde salva no Drive
 
-- Colaborador: `02 RH/{{NOME}} - {{VÍNCULO}}/03 PAGAMENTOS/AAAA-MM_comprovante.pdf`
-- Despesas fixas e relatório: `03 FINANCEIRO/AAAA-MM/`
+- Colaborador: `RH/{{NOME}} - {{VÍNCULO}}/03_PAGAMENTOS/AAAA-MM_comprovante.pdf`
+- Despesas fixas e relatório: `FINANCEIRO/AAAA/MM/`
 
 ## Pendências `[A CONFIRMAR]`
 - Lista da equipe: nome, função, vínculo, valor, dia de pagamento e chave Pix de cada pessoa (pedido no Projeto, até 18/11).

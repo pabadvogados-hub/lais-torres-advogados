@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Cliente da API ADVBOX (adaptado de AUTOMACOES PAB/INTEGRACOES/advbox_integration.py,
-sem nenhum ID do PAB: remetente, tipos de tarefa e responsaveis vem de config/escritorio.json).
+"""Cliente da API ADVBOX (adaptado do cliente ADVBOX que o Casal da IA ja usa em producao, sem
+nenhum ID de outro escritorio: remetente, tipos de tarefa e responsaveis vem de config/escritorio.json).
 
 Base: https://app.advbox.com.br/api/v1 · Auth: Bearer (env ADVBOX_API_TOKEN)
 Limites: 30 GET/minuto, 500 POST/dia por rota, 500 PUT/dia.
@@ -106,7 +106,7 @@ def ultimas_movimentacoes(lawsuit_id) -> list[dict]:
 
 def criar_tarefa(lawsuit_id, tasks_id, guests, from_id, comments, start_date,
                  end_date=None, date_deadline=None, urgent=False, executar=False) -> dict:
-    """POST /posts. Em dry-run devolve o payload. `from` precisa ir como string (licao do PAB)."""
+    """POST /posts. Em dry-run devolve o payload. `from` precisa ir como string (licao de producao)."""
     if not lawsuit_id:
         return {"erro": "ADVBOX exige lawsuits_id para criar tarefa (configure o processo/registro)"}
     if not tasks_id or not from_id or not guests:

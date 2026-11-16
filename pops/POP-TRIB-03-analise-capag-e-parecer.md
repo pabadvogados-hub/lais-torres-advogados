@@ -75,7 +75,7 @@ ou irrecuperáveis (faixas C e D) **(conferir no edital e na portaria vigentes)*
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/05 TRIBUTÁRIO/02 RELATÓRIOS/` — `AAAA-MM-DD_PARECER-TRIBUTARIO_{{cliente}}.pdf` e a planilha de cenários.
+`CLIENTES/{{cliente}}/05_TRIBUTARIO/02_RELATORIOS/` — `AAAA-MM-DD_PARECER-TRIBUTARIO_{{cliente}}.pdf` e a planilha de cenários.
 
 ## Pendências `[A CONFIRMAR]`
 - Papel timbrado do escritório para o parecer.

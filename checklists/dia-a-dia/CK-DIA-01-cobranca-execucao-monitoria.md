@@ -71,4 +71,4 @@ Versão 1 — 16/11/2026 · Dono: Dra. Larissa · Usado no POP-ATD-01 (passo 5) 
 | Pedidos de pesquisa e bloqueio de bens na inicial | |
 | Prazo para protocolo | |
 
-Salvar em: antes da ação, `04 CLIENTES/{{cliente}}/03 EXTRAJUDICIAL/AAAA-MM-DD - Cobrança {{devedor}}/`; depois de distribuída, `02 JUDICIAL/{{nº}} - {{devedor}} - {{via}}/`.
+Salvar em: antes da ação, `CLIENTES/{{cliente}}/03_EXTRAJUDICIAL/AAAA-MM-DD - Cobrança {{devedor}}/`; depois de distribuída, `02_JUDICIAL/{{nº}} - {{devedor}} - {{via}}/`.

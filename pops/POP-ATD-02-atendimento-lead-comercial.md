@@ -101,8 +101,8 @@ O lead fica no **Infinitum** (CRM), não no ADVBOX. Só entra no ADVBOX quando f
 
 ## Onde salva no Drive
 
-`05 COMERCIAL/{{AAAA-MM}}/{{nome do lead}}/` — documentos que o lead mandar antes de fechar e a proposta enviada.
-Ao fechar, a pasta é movida para `04 CLIENTES/{{nome do cliente}}/01 CONTRATO E DOCUMENTOS/`.
+`00_ESCRITORIO/COMERCIAL/{{AAAA-MM}}/{{nome do lead}}/` — documentos que o lead mandar antes de fechar e a proposta enviada.
+Ao fechar, a pasta é movida para `CLIENTES/{{nome do cliente}}/01_CONTRATO_E_DOCUMENTOS/`.
 
 ## Pendências `[A CONFIRMAR]`
 - Qual número fica comercial (sugestão do projeto: 62) e confirmação de que o 99 segue com o público local.

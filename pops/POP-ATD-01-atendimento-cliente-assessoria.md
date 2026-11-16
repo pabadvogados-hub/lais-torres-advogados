@@ -95,8 +95,8 @@ Enquanto a automação não estiver no ar, a pessoa faz todos os passos manualme
 6. **Registrar no ADVBOX e no Drive.** — *no mesmo dia*
    - Criar a tarefa `[DEMANDA NOVA] {{assunto}} - {{cliente}}` para o advogado(a) da área, com
      prazo de análise de **2 dias úteis** (urgência: hoje).
-   - Criar a pasta da demanda no Drive (`04 CLIENTES/{{cliente}}/03 EXTRAJUDICIAL/AAAA-MM-DD - {{assunto}}`)
-     ou, se já for processo, `02 JUDICIAL/{{nº do processo}} ...`. Salvar ali os arquivos e colar o link na tarefa.
+   - Criar a pasta da demanda no Drive (`CLIENTES/{{cliente}}/03_EXTRAJUDICIAL/AAAA-MM-DD - {{assunto}}`)
+     ou, se já for processo, `02_JUDICIAL/{{nº do processo}} ...`. Salvar ali os arquivos e colar o link na tarefa.
 
 7. **Dar o retorno com prazo ao cliente** (MSG-01, modelo 4): quem vai cuidar e até quando ele terá
    a resposta. Nunca prometer resultado. — *no mesmo dia útil*
@@ -124,8 +124,8 @@ responder com segurança. **Na dúvida, escala.**
 
 ## Onde salva no Drive
 
-- Demanda extrajudicial: `04 CLIENTES/{{cliente}}/03 EXTRAJUDICIAL/AAAA-MM-DD - {{assunto}}/`
-- Processo: `04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - .../01 DOCUMENTOS DO CLIENTE/`
+- Demanda extrajudicial: `CLIENTES/{{cliente}}/03_EXTRAJUDICIAL/AAAA-MM-DD - {{assunto}}/`
+- Processo: `CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - .../01_DOCUMENTOS_DO_CLIENTE/`
 
 ## Regras de conduta
 

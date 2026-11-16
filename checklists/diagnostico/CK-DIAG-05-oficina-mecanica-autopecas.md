@@ -79,4 +79,4 @@ autorização de test drive e treinamento rápido da equipe do balcão para usar
 Valor: `[A CONFIRMAR]`. Itens ambientais e de segurança do trabalho: orientação e indicação de
 parceiro técnico, com revisão jurídica.
 
-Salvar em: `04 CLIENTES/{{cliente}}/04 DIAGNÓSTICO DA ASSESSORIA/`.
+Salvar em: `CLIENTES/{{cliente}}/04_ASSESSORIA_DIAGNOSTICO/`.

@@ -64,4 +64,4 @@ Versão 1 — 16/11/2026 · Dono: Kathle (trabalhista) · Usado no POP-ATD-01 (p
 | Carta de preposição e documentos da empresa (`CK-DIA-04`) | ( ) |
 | Limite de valor autorizado para acordo (por escrito) | |
 
-Salvar em: `04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - {{reclamante}} - RECLAMAÇÃO TRABALHISTA/01 DOCUMENTOS DO CLIENTE/`.
+Salvar em: `CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - {{reclamante}} - RECLAMAÇÃO TRABALHISTA/01_DOCUMENTOS_DO_CLIENTE/`.

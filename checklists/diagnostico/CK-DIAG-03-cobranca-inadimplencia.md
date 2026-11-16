@@ -51,4 +51,4 @@ Versão 1 — 16/11/2026 · Dono: Dra. Larissa (cível) · Usado no POP-ATD-03, 
 pelo POP-OP-04, e modelos para as próximas vendas (itens 2, 3, 4, 5, 8, 9, 10, 12). Valor e forma de
 honorários (fixo por ação, percentual sobre o recuperado): `[A CONFIRMAR]`.
 
-Salvar em: `04 CLIENTES/{{cliente}}/04 DIAGNÓSTICO DA ASSESSORIA/`.
+Salvar em: `CLIENTES/{{cliente}}/04_ASSESSORIA_DIAGNOSTICO/`.

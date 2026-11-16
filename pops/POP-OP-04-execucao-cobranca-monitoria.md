@@ -94,9 +94,9 @@ judicializa. Por ser repetitiva, tem modelo, checklist e prazo. O ponto que mais
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - {{devedor}} - {{EXECUÇÃO | MONITÓRIA | COBRANÇA}}/`
-Antes da distribuição (ainda sem número): `04 CLIENTES/{{cliente}}/03 EXTRAJUDICIAL/AAAA-MM-DD - Cobrança {{devedor}}/`;
-depois de distribuída, mover para `02 JUDICIAL` com o número.
+`CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - {{devedor}} - {{EXECUÇÃO | MONITÓRIA | COBRANÇA}}/`
+Antes da distribuição (ainda sem número): `CLIENTES/{{cliente}}/03_EXTRAJUDICIAL/AAAA-MM-DD - Cobrança {{devedor}}/`;
+depois de distribuída, mover para `02_JUDICIAL` com o número.
 
 ## Pendências `[A CONFIRMAR]`
 - Modelos do escritório de execução, monitória, cobrança e notificação extrajudicial (Módulo 5, a partir das peças reais).

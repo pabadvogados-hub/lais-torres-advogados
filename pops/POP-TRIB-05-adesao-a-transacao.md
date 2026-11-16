@@ -64,7 +64,7 @@ Receita para a PGFN, rever a CAPAG); depois, aderir no edital certo, sem perder 
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/05 TRIBUTÁRIO/03 PETIÇÕES/` (pedidos e protocolos) e `01 DOCUMENTOS FISCAIS/` (simulação, recibo, termo de adesão, guias e comprovantes).
+`CLIENTES/{{cliente}}/05_TRIBUTARIO/03_PETICOES/` (pedidos e protocolos) e `01_DOCUMENTOS_FISCAIS/` (simulação, recibo, termo de adesão, guias e comprovantes).
 
 ## Pendências `[A CONFIRMAR]`
 - Itens marcados **(conferir)**: sempre pela norma, pelo sistema e pelo edital vigentes na data.

@@ -71,4 +71,4 @@ Nenhuma destas é promessa ao cliente: dependem do regime, das notas e da jurisp
 econômico: 25% para clientes novos, 10% para os antigos); Recuperação de Créditos `[A CONFIRMAR modelo de honorários]`;
 Monitoramento mensal de certidões e parcelas `[A CONFIRMAR se é incluído na assessoria]`.
 
-Salvar em: `04 CLIENTES/{{cliente}}/04 DIAGNÓSTICO DA ASSESSORIA/` e, havendo passivo, `05 TRIBUTÁRIO/`.
+Salvar em: `CLIENTES/{{cliente}}/04_ASSESSORIA_DIAGNOSTICO/` e, havendo passivo, `05_TRIBUTARIO/`.

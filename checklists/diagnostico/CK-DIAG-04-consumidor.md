@@ -47,4 +47,4 @@ Versão 1 — 16/11/2026 · Dono: Dra. Laís · Usado no POP-ATD-03, passo 8
 **Pacote de Documentos de Consumo**: contrato, orçamento, autorização/OS, termo de garantia, política
 de troca, termo de recusa, política de privacidade e fluxo de reclamações. Valor: `[A CONFIRMAR]`.
 
-Salvar em: `04 CLIENTES/{{cliente}}/04 DIAGNÓSTICO DA ASSESSORIA/`.
+Salvar em: `CLIENTES/{{cliente}}/04_ASSESSORIA_DIAGNOSTICO/`.

@@ -30,7 +30,7 @@ comprovante e juntar no processo. Este POP tira isso da cabeça das pessoas e ev
 
 Guias: cada tribunal tem seu sistema (TJMA, TJGO, Justiça Federal/TRF1, TRT da 16ª Região no
 Maranhão, TRT da 18ª Região em Goiás). O passo a passo de emissão de cada tribunal fica em
-`01 ESCRITÓRIO/MODELOS/CUSTAS/` `[A CONFIRMAR: montar o roteiro de cada sistema na implantação]`.
+`00_ESCRITORIO/MODELOS/CUSTAS/` `[A CONFIRMAR: montar o roteiro de cada sistema na implantação]`.
 
 ## Automação x pessoa
 
@@ -49,7 +49,7 @@ Maranhão, TRT da 18ª Região em Goiás). O passo a passo de emissão de cada t
    pode ser caso de petição informando, não de guia. — *D0*
 3. **Gerar a guia** no sistema do tribunal. Conferir: número do processo, nome das partes, valor,
    código da custa e **data de vencimento da guia** (se a guia vencer antes do prazo, anotar). — *D0, até D1 útil*
-4. **Salvar a guia** no Drive (`04 CUSTAS E GUIAS`), com nome `AAAA-MM-DD_GUIA-CUSTAS_{{tipo}}.pdf`. — *D0*
+4. **Salvar a guia** no Drive (`04_CUSTAS_E_GUIAS`), com nome `AAAA-MM-DD_GUIA-CUSTAS_{{tipo}}.pdf`. — *D0*
 5. **Enviar ao cliente** pelo canal dele (MSG-03, modelo 1), com valor, data limite de pagamento
    (prazo interno = prazo fatal menos 3 dias úteis) e o que acontece se não pagar. — *até D1 útil*
 6. **Cobrar o comprovante** (MSG-03, modelos 2 a 4):
@@ -65,7 +65,7 @@ Maranhão, TRT da 18ª Região em Goiás). O passo a passo de emissão de cada t
    autorização da Dra. Laís, e o valor é lançado para reembolso `[A CONFIRMAR regra]`.
 8. **Recebeu o comprovante**: conferir valor, data e autenticação bancária. Comprovante de
    agendamento **não vale**: pedir o comprovante do pagamento efetivado. — *no dia em que chegar*
-9. **Juntar no processo** com petição simples de juntada (modelo em `01 ESCRITÓRIO/MODELOS`). — *até prazo fatal menos 1 dia útil*
+9. **Juntar no processo** com petição simples de juntada (modelo em `00_ESCRITORIO/MODELOS`). — *até prazo fatal menos 1 dia útil*
 10. **Salvar o protocolo** da juntada no Drive e concluir as tarefas no ADVBOX. — *no mesmo dia*
 
 ## O que vira tarefa no ADVBOX
@@ -78,7 +78,7 @@ Maranhão, TRT da 18ª Região em Goiás). O passo a passo de emissão de cada t
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - .../04 CUSTAS E GUIAS/` — guia, comprovante e protocolo da juntada.
+`CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - .../04_CUSTAS_E_GUIAS/` — guia, comprovante e protocolo da juntada.
 
 ## Pendências `[A CONFIRMAR]`
 - Roteiro de emissão de guia de cada tribunal em que o escritório atua.

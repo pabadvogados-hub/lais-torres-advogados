@@ -106,7 +106,7 @@ cliente → redigir**. Sem diagnóstico, a peça vira chute: não pular etapas, 
 
 ### Fase F — Preparo de audiência
 
-10. **Carta de preposição** (modelo em `01 ESCRITÓRIO/MODELOS`, ver `CK-DIA-04`) assinada pelo
+10. **Carta de preposição** (modelo em `00_ESCRITORIO/MODELOS`, ver `CK-DIA-04`) assinada pelo
     representante legal, com o documento do preposto. — *até 3 dias úteis antes*
 11. **Preparar o preposto** (Kathle): reunião de 30 a 60 minutos com o roteiro dos fatos do processo
     (admissão, função, jornada, salário, saída, cada pedido). Regra: o preposto diz o que sabe, com
@@ -156,10 +156,10 @@ cliente → redigir**. Sem diagnóstico, a peça vira chute: não pular etapas, 
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - {{reclamante}} - RECLAMAÇÃO TRABALHISTA/`
-- `01 DOCUMENTOS DO CLIENTE` — documentos da empresa, carta de preposição.
-- `02 PEÇAS` — análise (etapas 1 e 2), contestação (minuta e protocolada), quesitos, impugnação ao laudo.
-- `03 DECISÕES E INTIMAÇÕES` — notificação, atas, laudo, sentença.
+`CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - {{reclamante}} - RECLAMAÇÃO TRABALHISTA/`
+- `01_DOCUMENTOS_DO_CLIENTE` — documentos da empresa, carta de preposição.
+- `02_PECAS` — análise (etapas 1 e 2), contestação (minuta e protocolada), quesitos, impugnação ao laudo.
+- `03_DECISOES_E_INTIMACOES` — notificação, atas, laudo, sentença.
 
 ## Pendências `[A CONFIRMAR]`
 - Quem assina e protocola as peças trabalhistas enquanto a Kathle não estiver inscrita como advogada.

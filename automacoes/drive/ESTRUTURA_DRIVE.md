@@ -117,9 +117,7 @@ o anexo num campo do card, e de uma integração "Enviar Webhook" para a VPS (`r
 **A conferir na tela do Infinitum:** se o anexo pode ir para um campo do card. Enquanto isso não for
 confirmado, roda-se manualmente: `documento_whatsapp.py --arquivo ... --telefone ... --legenda ...`.
 
-## Diferença em relação aos POPs v1
+## POPs e checklists
 
-Os POPs de 16/11 (`pops/README.md` 4.2, POP-ADM-01, POP-ADM-02, POP-OP-02, POP-OP-05) usam nomes
-provisórios: `01 ESCRITÓRIO`, `02 RH`, `03 FINANCEIRO/AAAA-MM`, `04 CLIENTES`, `06 CONTROLADORIA`.
-O próprio README dos POPs diz que os nomes finais seriam definidos na implantação do Drive. **Os nomes
-valem como estão neste arquivo**, e os POPs precisam ser atualizados para estes nomes.
+Em 16/11 os POPs, checklists e mensagens foram alinhados a estes nomes (129 trocas em 26 arquivos).
+Se um nome mudar no `estrutura_drive.json`, atualize também `pops/README.md` (seção 4.2).

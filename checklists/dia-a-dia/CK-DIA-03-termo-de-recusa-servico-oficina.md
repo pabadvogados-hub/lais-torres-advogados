@@ -64,6 +64,6 @@ responsabilidade, que protege a oficina se o veículo der problema depois.
 5. Ciência de que a oficina não responde pelos danos que decorram do item recusado.
 6. Data, hora, quilometragem, assinatura do cliente, do responsável da oficina e, se necessário, de duas testemunhas.
 
-O texto final do modelo é redigido pela Dra. Laís e fica em `01 ESCRITÓRIO/MODELOS/OFICINA/`.
+O texto final do modelo é redigido pela Dra. Laís e fica em `00_ESCRITORIO/MODELOS/OFICINA/`.
 
-Salvar (quando o escritório for acionado): `04 CLIENTES/{{oficina}}/03 EXTRAJUDICIAL/AAAA-MM-DD - Recusa {{placa}}/`.
+Salvar (quando o escritório for acionado): `CLIENTES/{{oficina}}/03_EXTRAJUDICIAL/AAAA-MM-DD - Recusa {{placa}}/`.

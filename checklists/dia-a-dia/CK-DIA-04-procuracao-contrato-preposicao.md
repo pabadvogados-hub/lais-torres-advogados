@@ -4,7 +4,7 @@ Versão 1 — 16/11/2026 · Dono: Dra. Laís · Usado no POP-ATD-03, no POP-OP-0
 
 **Quando usar**: cliente novo; demanda nova de empresa do grupo sem procuração; audiência que
 precisa de preposto; procuração antiga ou sem os poderes necessários.
-**Regra**: os modelos ficam em `01 ESCRITÓRIO/MODELOS/` com campos `{{chave}}`. Nunca "remendar"
+**Regra**: os modelos ficam em `00_ESCRITORIO/MODELOS/` com campos `{{chave}}`. Nunca "remendar"
 procuração de outro cliente.
 
 ## A. Procuração
@@ -77,4 +77,4 @@ Regras por justiça:
 | Advogado(a) substabelecido(a) e OAB | ( ) |
 | Processo | ( ) |
 
-Salvar: procuração e contrato em `04 CLIENTES/{{cliente}}/01 CONTRATO E DOCUMENTOS/`; carta de preposição em `02 JUDICIAL/{{nº}}/01 DOCUMENTOS DO CLIENTE/`.
+Salvar: procuração e contrato em `CLIENTES/{{cliente}}/01_CONTRATO_E_DOCUMENTOS/`; carta de preposição em `02_JUDICIAL/{{nº}}/01_DOCUMENTOS_DO_CLIENTE/`.

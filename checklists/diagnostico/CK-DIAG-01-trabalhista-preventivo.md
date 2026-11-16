@@ -69,4 +69,4 @@ Versão 1 — 16/11/2026 · Dono: Kathle (trabalhista) · Usado no POP-ATD-03, p
 por profissional de segurança e medicina do trabalho, com revisão jurídica do escritório.
 Valor: `[A CONFIRMAR]`.
 
-Salvar em: `04 CLIENTES/{{cliente}}/04 DIAGNÓSTICO DA ASSESSORIA/`.
+Salvar em: `CLIENTES/{{cliente}}/04_ASSESSORIA_DIAGNOSTICO/`.

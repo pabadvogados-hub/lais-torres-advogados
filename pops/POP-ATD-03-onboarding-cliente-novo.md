@@ -20,7 +20,7 @@ contratação: modelo de contrato, procuração e lista de documentos já pronto
 
 | Tipo | Contrato | Depois do onboarding |
 |---|---|---|
-| **Assessoria mensal** (empresa) | Contrato de assessoria `[modelo em 01 ESCRITÓRIO/MODELOS]` | Diagnóstico de entrada (5 checklists) e plano dos meses seguintes |
+| **Assessoria mensal** (empresa) | Contrato de assessoria `[modelo em 00_ESCRITORIO/MODELOS]` | Diagnóstico de entrada (5 checklists) e plano dos meses seguintes |
 | **Tributário** (transação, CAPAG, PGFN) | Contrato tributário com êxito: **25% sobre o proveito econômico para clientes novos**; clientes antigos mantêm 10% | POP-TRIB-02 |
 | **Causa única** (um processo ou demanda) | Contrato de causa única | Cobrança de documentos até montar a peça |
 
@@ -51,8 +51,8 @@ contratação: modelo de contrato, procuração e lista de documentos já pronto
      do escritório (MSG-07: 10, 5 e 3 dias antes e no dia do vencimento).
    - Nota fiscal pelo Asaas: anotar se o cliente exige a nota **antes** do pagamento ou se ela sai
      **depois** do pagamento.
-6. **Criar a pasta no Drive** `04 CLIENTES/{{NOME DO CLIENTE}}/` com as subpastas do README (item 4.2).
-   Contrato e procuração assinados em `01 CONTRATO E DOCUMENTOS`. — *D0 a D1*
+6. **Criar a pasta no Drive** `CLIENTES/{{NOME DO CLIENTE}}/` com as subpastas do README (item 4.2).
+   Contrato e procuração assinados em `01_CONTRATO_E_DOCUMENTOS`. — *D0 a D1*
 7. **Cadastrar no ADVBOX**: cliente, processo ou demanda, responsável da área e as tarefas abaixo.
    Colar o link da pasta do Drive no cadastro. — *D1*
 8. **Pedir os documentos** — *D1*
@@ -94,9 +94,9 @@ contratação: modelo de contrato, procuração e lista de documentos já pronto
 
 ## Onde salva no Drive
 
-- Contrato, procuração e documentos pessoais ou societários: `04 CLIENTES/{{cliente}}/01 CONTRATO E DOCUMENTOS/`
-- Checklists respondidos, documentos do diagnóstico e relatório: `04 CLIENTES/{{cliente}}/04 DIAGNÓSTICO DA ASSESSORIA/`
-- Documentos do processo: `04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - .../01 DOCUMENTOS DO CLIENTE/`
+- Contrato, procuração e documentos pessoais ou societários: `CLIENTES/{{cliente}}/01_CONTRATO_E_DOCUMENTOS/`
+- Checklists respondidos, documentos do diagnóstico e relatório: `CLIENTES/{{cliente}}/04_ASSESSORIA_DIAGNOSTICO/`
+- Documentos do processo: `CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - .../01_DOCUMENTOS_DO_CLIENTE/`
 
 ## Pendências `[A CONFIRMAR]`
 - Ferramenta de assinatura eletrônica.

@@ -47,7 +47,7 @@ e sair da reunião com contrato assinado ou com a objeção real identificada.
 
 ## Onde salva no Drive
 
-Proposta e contrato: `04 CLIENTES/{{cliente}}/01 CONTRATO E DOCUMENTOS/`.
+Proposta e contrato: `CLIENTES/{{cliente}}/01_CONTRATO_E_DOCUMENTOS/`.
 
 ## Pendências `[A CONFIRMAR]`
 - Existência e valor de honorário fixo no produto tributário.

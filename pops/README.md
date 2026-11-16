@@ -75,30 +75,31 @@ só no celular. Se o ADVBOX sair, o acervo continua inteiro no Drive.
 
 ```
 DRIVE DO ESCRITÓRIO
-├── 01 ESCRITÓRIO            POPs, checklists, modelos (procuração, contratos, preposição, peças)
-├── 02 RH                    uma pasta por colaborador
-├── 03 FINANCEIRO            uma pasta por mês (AAAA-MM)
-├── 04 CLIENTES
+├── 00_ESCRITORIO            POPs, checklists, modelos (procuração, contratos, preposição, peças)
+├── RH                    uma pasta por colaborador
+├── FINANCEIRO            uma pasta por mês (AAAA-MM)
+├── CLIENTES
 │   └── {{NOME DO CLIENTE}}
-│       ├── 01 CONTRATO E DOCUMENTOS       contrato, procuração, docs pessoais/societários
-│       ├── 02 JUDICIAL
+│       ├── 01_CONTRATO_E_DOCUMENTOS       contrato, procuração, docs pessoais/societários
+│       ├── 02_JUDICIAL
 │       │   └── {{nº do processo}} - {{parte contrária}} - {{tipo de ação}}
-│       │       ├── 01 DOCUMENTOS DO CLIENTE
-│       │       ├── 02 PEÇAS               minutas e versão protocolada
-│       │       ├── 03 DECISÕES E INTIMAÇÕES
-│       │       └── 04 CUSTAS E GUIAS
-│       ├── 03 EXTRAJUDICIAL
+│       │       ├── 01_DOCUMENTOS_DO_CLIENTE
+│       │       ├── 02_PECAS               minutas e versão protocolada
+│       │       ├── 03_DECISOES_E_INTIMACOES
+│       │       └── 04_CUSTAS_E_GUIAS
+│       ├── 03_EXTRAJUDICIAL
 │       │   └── AAAA-MM-DD - {{assunto curto}}
-│       ├── 04 DIAGNÓSTICO DA ASSESSORIA   só para cliente de assessoria
-│       └── 05 TRIBUTÁRIO                  só quando houver demanda tributária
-│           ├── 01 DOCUMENTOS FISCAIS
-│           ├── 02 RELATÓRIOS
-│           └── 03 PETIÇÕES
-├── 05 COMERCIAL             leads e propostas
-└── 06 CONTROLADORIA         relatórios diários da controladoria
+│       ├── 04_ASSESSORIA_DIAGNOSTICO   só para cliente de assessoria
+│       └── 05_TRIBUTARIO                  só quando houver demanda tributária
+│           ├── 01_DOCUMENTOS_FISCAIS
+│           ├── 02_RELATORIOS
+│           └── 03_PETICOES
+├── 00_ESCRITORIO/COMERCIAL             leads e propostas
+└── 00_ESCRITORIO/CONTROLADORIA         relatórios diários da controladoria
 ```
 
-Os nomes finais das pastas podem ser ajustados na implantação do Drive; quando mudar, atualize aqui.
+A árvore oficial e completa (com RH, FINANCEIRO/AAAA/MM, ENTRADA_WHATSAPP e 99_A_CLASSIFICAR) está em
+`automacoes/drive/ESTRUTURA_DRIVE.md`, que é a fonte dos nomes usados pelos robôs. Se divergir, vale ela.
 
 ### 4.3 Nome dos arquivos
 `AAAA-MM-DD_TIPO_DESCRICAO.ext` — exemplo: `2026-11-16_GUIA-CUSTAS_diligencia-oficial.pdf`.

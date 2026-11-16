@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Cliente da API PUBLICA do Infinitum (adaptado de AUTOMACOES PAB/PALESTRA EURO 31-05-2026/
-infinitum_integration.py, sem token nem IDs do PAB).
+"""Cliente da API PUBLICA do Infinitum (adaptado do infinitum_integration.py do Casal da IA,
+sem token nem IDs de outra organizacao).
 
 Base: https://public.infinitum.app.br/api/v1/public · Auth: header X-Public-Token
 (env INFINITUM_PUBLIC_TOKEN). Doc: docs.infinitum.app.br.

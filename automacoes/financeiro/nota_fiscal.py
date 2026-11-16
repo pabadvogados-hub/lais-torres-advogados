@@ -14,8 +14,8 @@ municipalServiceName (+ municipalServiceId OU municipalServiceCode), taxes{retai
 cofins, csll, inss, ir}, externalReference. Status: SCHEDULED -> AUTHORIZED (ou ERROR).
 A nota emitida traz pdfUrl e xmlUrl.
 
-TRAVAS (licao do PAB em 15/11/2026, quando ligar "automatico" sem corte geraria 2.936 notas
-retroativas e 480 duplicadas):
+TRAVAS (licao de implantacao anterior: ligar a emissao "automatica" sem data de corte gera nota
+retroativa de anos e nota duplicada do que o Asaas ja emitiu):
   - fiscal.emitir_desde (obrigatorio com --go): cobranca com vencimento/pagamento anterior
     nunca entra;
   - idempotencia por externalReference "nf:<payment_id>" + tabela notas do banco local;

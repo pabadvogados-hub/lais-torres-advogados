@@ -81,9 +81,9 @@ seccional averbar os contratos e se o escritório de Imperatriz precisa estar re
    dia de pagamento, data de início. — *D0*
 2. **Enviar ao colaborador o checklist** do vínculo e o formulário de dados (incluindo chave Pix
    preenchida por ele). — *D0*
-3. **Criar a pasta** `02 RH/{{NOME COMPLETO}} - {{VÍNCULO}}/` com as subpastas abaixo. — *D0*
+3. **Criar a pasta** `RH/{{NOME COMPLETO}} - {{VÍNCULO}}/` com as subpastas abaixo. — *D0*
 4. **Receber e conferir os documentos.** Faltou algo: cobrar em 2 dias úteis. — *até D3 úteis*
-5. **Gerar o contrato** no modelo do vínculo (modelo em `01 ESCRITÓRIO/MODELOS/RH/`). — *D3*
+5. **Gerar o contrato** no modelo do vínculo (modelo em `00_ESCRITORIO/MODELOS/RH/`). — *D3*
 6. **Revisão da Dra. Laís.** — *D4*
 7. **Assinatura eletrônica** de todas as partes (no estágio: estudante, escritório e instituição de
    ensino; muitas instituições têm modelo e fluxo próprios `[A CONFIRMAR por faculdade]`). — *antes do 1º dia*
@@ -112,12 +112,12 @@ está há mais tempo e as advogadas integrais (definir o modelo de vínculo ante
 ## Onde salva no Drive
 
 ```
-02 RH/{{NOME COMPLETO}} - {{ESTAGIÁRIO | ASSOCIADO | EMPREGADO | APOIO}}/
-├── 01 DOCUMENTOS PESSOAIS
-├── 02 CONTRATO E ADITIVOS        contrato assinado, averbação OAB, apólice do seguro
-├── 03 PAGAMENTOS                 comprovantes por mês (AAAA-MM_comprovante.pdf), recibos
-├── 04 RELATÓRIOS E AVALIAÇÕES    relatórios semestrais de estágio
-└── 05 DESLIGAMENTO               termo de rescisão ou distrato
+RH/{{NOME COMPLETO}} - {{ESTAGIÁRIO | ASSOCIADO | EMPREGADO | APOIO}}/
+├── 01_DOCUMENTOS_PESSOAIS
+├── 02_CONTRATO_E_ADITIVOS        contrato assinado, averbação OAB, apólice do seguro
+├── 03_PAGAMENTOS                 comprovantes por mês (AAAA-MM_comprovante.pdf), recibos
+├── 04_RELATORIOS_E_AVALIACOES    relatórios semestrais de estágio
+└── 05_DESLIGAMENTO               termo de rescisão ou distrato
 ```
 
 ## Pendências `[A CONFIRMAR]`

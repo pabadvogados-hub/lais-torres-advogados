@@ -56,7 +56,7 @@ Na dúvida entre duas cores, vale a mais grave.
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/05 TRIBUTÁRIO/01 DOCUMENTOS FISCAIS/PARCELAS/AAAA-MM_guia.pdf` e `AAAA-MM_comprovante.pdf`.
+`CLIENTES/{{cliente}}/05_TRIBUTARIO/01_DOCUMENTOS_FISCAIS/PARCELAS/AAAA-MM_guia.pdf` e `AAAA-MM_comprovante.pdf`.
 
 ## Pendências `[A CONFIRMAR]`
 - Quem executa o controle mensal.

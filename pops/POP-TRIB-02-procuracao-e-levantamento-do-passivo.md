@@ -26,7 +26,7 @@ horas; com o extrato na mão, a IA faz a análise de vários clientes de uma vez
 
 ## Passo a passo
 
-1. **Criar a pasta** `04 CLIENTES/{{cliente}}/05 TRIBUTÁRIO/` com `01 DOCUMENTOS FISCAIS`, `02 RELATÓRIOS` e `03 PETIÇÕES`. — *D0*
+1. **Criar a pasta** `CLIENTES/{{cliente}}/05_TRIBUTARIO/` com `01_DOCUMENTOS_FISCAIS`, `02_RELATORIOS` e `03_PETICOES`. — *D0*
 2. **Conferir a procuração eletrônica no e-CAC**: outorgante (CNPJ do cliente), outorgado
    (CPF do Dr. Alex ou CNPJ do escritório `[A CONFIRMAR]`), serviços liberados e validade
    `[A CONFIRMAR prazo padrão]`. Se faltar serviço, pedir nova procuração ao cliente. — *D0*
@@ -46,7 +46,7 @@ horas; com o extrato na mão, a IA faz a análise de vários clientes de uma vez
 5. **Levantar também** (quando houver): dívida ativa estadual (Sefaz do estado) e municipal, e
    execuções fiscais (consulta pública dos tribunais). A transação da PGFN cobre só dívida federal;
    estadual e municipal seguem regras próprias **(conferir com o Dr. Alex)**. — *se houver*
-6. **Rodar o agente de passivo fiscal** com todos os PDFs. O relatório vai para `02 RELATÓRIOS`. — *D1*
+6. **Rodar o agente de passivo fiscal** com todos os PDFs. O relatório vai para `02_RELATORIOS`. — *D1*
 7. **Criar a tarefa** de análise para o Dr. Alex (POP-TRIB-03). — *D1*
 
 ## O que vira tarefa no ADVBOX
@@ -58,7 +58,7 @@ horas; com o extrato na mão, a IA faz a análise de vários clientes de uma vez
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/05 TRIBUTÁRIO/01 DOCUMENTOS FISCAIS/` (extratos) e `02 RELATÓRIOS/` (relatório do agente).
+`CLIENTES/{{cliente}}/05_TRIBUTARIO/01_DOCUMENTOS_FISCAIS/` (extratos) e `02_RELATORIOS/` (relatório do agente).
 
 ## Pendências `[A CONFIRMAR]`
 - Outorgado da procuração (CPF do Dr. Alex ou CNPJ do escritório) e validade padrão.

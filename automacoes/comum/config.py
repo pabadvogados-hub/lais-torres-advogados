@@ -50,6 +50,9 @@ def garantir_dir(p: Path) -> Path:
     return p
 
 
+_AVISADOS: set[str] = set()
+
+
 def carregar_json(nome: str, obrigatorio: bool = False) -> dict:
     """Le config/<nome>.json. Se nao existir, cai no .example.json marcado com _EXEMPLO."""
     real = CONFIG_DIR / f"{nome}.json"
@@ -60,7 +63,9 @@ def carregar_json(nome: str, obrigatorio: bool = False) -> dict:
         dados = json.loads(exemplo.read_text("utf-8"))
         if isinstance(dados, dict):
             dados["_EXEMPLO"] = True
-        print(f"  AVISO: config/{nome}.json nao existe; usando {exemplo.name} (so serve para dry-run).")
+        if nome not in _AVISADOS:
+            _AVISADOS.add(nome)
+            print(f"  AVISO: config/{nome}.json nao existe; usando {exemplo.name} (so serve para dry-run).")
         return dados
     if obrigatorio:
         raise SystemExit(f"ERRO: config/{nome}.json nao encontrado.")

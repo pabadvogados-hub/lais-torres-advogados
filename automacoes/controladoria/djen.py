@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Consulta ao DJEN / API Comunica do PJe-CNJ (gratuita, oficial) por OAB.
 
-Copiado de AUTOMACOES PAB/INTEGRACOES/comunica_djen.py (mesma logica de retry), sem dado do PAB.
+Copiado do modulo comunica_djen.py que o Casal da IA ja usa em producao (mesma logica de retry).
 Endpoint: https://comunicaapi.pje.jus.br/api/v1/comunicacao (Swagger: cnj/pcp no SwaggerHub)
 
-PEGADINHA (validada no PAB): para a MESMA consulta a API alterna entre "sistema muito ocupado",
+PEGADINHA (validada em producao): para a MESMA consulta a API alterna entre "sistema muito ocupado",
 um falso-vazio (status success com count 0) e os dados certos. Por isso a 1a pagina trata o
 vazio como retentavel, com backoff (ate 10 tentativas). Sem isso o robo diz "nenhuma intimacao"
 com intimacao no diario.

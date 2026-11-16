@@ -34,7 +34,7 @@ Minuta → 1ª correção pela IA → autor(a) ajusta → revisão final da áre
 
 ## Passo a passo
 
-1. **Autor(a) da minuta** salva a peça em `02 PEÇAS` com o nome `MINUTA - TIPO - CLIENTE - Nº DO PROCESSO - AAAA-MM-DD.docx`
+1. **Autor(a) da minuta** salva a peça em `02_PECAS` com o nome `MINUTA - TIPO - CLIENTE - Nº DO PROCESSO - AAAA-MM-DD.docx`
    e junta, na mesma pasta ou em link, **o que a peça enfrenta** (inicial, decisão, sentença) e os documentos que ela cita. — *prazo interno da peça*
 2. **Rodar a primeira correção pela IA** com o checklist abaixo. A IA devolve um parecer com status
    **APROVADA**, **APROVADA COM RESSALVAS** ou **NÃO APROVADA**, e a lista numerada de ajustes (onde
@@ -100,7 +100,7 @@ A IA percorre as camadas na ordem: o que é eliminatório primeiro.
 
 ## Onde salva no Drive
 
-`04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - .../02 PEÇAS/`
+`CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - .../02_PECAS/`
 - `MINUTA - ...docx` (versões de trabalho)
 - `PARECER IA - ...md` (parecer da primeira correção)
 - `TIPO - CLIENTE - Nº - AAAA-MM-DD.docx` e `.pdf` (versão protocolada)

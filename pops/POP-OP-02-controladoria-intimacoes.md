@@ -38,7 +38,7 @@ O agente **sugere**; quem decide a classificação de decisão, sentença e acó
 3. **Classificar** usando a tabela do item "Classificação" e a árvore de decisão. — *até 11h*
 4. **Contar o prazo** (item "Como contar o prazo"). Anotar o prazo fatal e o prazo interno. — *até 11h*
 5. **Criar a tarefa no ADVBOX** com tipo, responsável, prazo interno e prazo fatal. Salvar o ato
-   em PDF no Drive (`03 DECISÕES E INTIMAÇÕES`). — *até 12h*
+   em PDF no Drive (`03_DECISOES_E_INTIMACOES`). — *até 12h*
 6. **Decisão, sentença ou acórdão**: mandar ao advogado(a) da área no mesmo dia, com a classificação
    sugerida, e esperar a confirmação. Se não houver resposta até as 16h, ligar. — *mesmo dia*
 7. **Avisar o cliente** quando a intimação mudar algo para ele (audiência, sentença, custas, pedido
@@ -146,8 +146,8 @@ Juizado Especial Cível: recurso inominado 10 dias; embargos de declaração 5 d
 
 ## Onde salva no Drive
 
-- Ato processual: `04 CLIENTES/{{cliente}}/02 JUDICIAL/{{nº do processo}} - .../03 DECISÕES E INTIMAÇÕES/AAAA-MM-DD_{{tipo}}.pdf`
-- Relatório diário: `06 CONTROLADORIA/AAAA-MM/AAAA-MM-DD_relatorio-controladoria.md`
+- Ato processual: `CLIENTES/{{cliente}}/02_JUDICIAL/{{nº do processo}} - .../03_DECISOES_E_INTIMACOES/AAAA-MM-DD_{{tipo}}.pdf`
+- Relatório diário: `00_ESCRITORIO/CONTROLADORIA/AAAA-MM/AAAA-MM-DD_relatorio-controladoria.md`
 
 ## Pendências `[A CONFIRMAR]`
 - Números de OAB do Dr. Alex, da Dra. Larissa e da Dra. Jaqueline, para monitorar as publicações.

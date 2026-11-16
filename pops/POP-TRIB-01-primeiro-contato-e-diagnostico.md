@@ -63,7 +63,7 @@ Lead fica no Infinitum. Cliente de assessoria: `[TRIB] Reunião de diagnóstico 
 
 ## Onde salva no Drive
 
-Lead: `05 COMERCIAL/{{AAAA-MM}}/{{lead}}/`. Cliente da casa: `04 CLIENTES/{{cliente}}/05 TRIBUTÁRIO/`.
+Lead: `00_ESCRITORIO/COMERCIAL/{{AAAA-MM}}/{{lead}}/`. Cliente da casa: `CLIENTES/{{cliente}}/05_TRIBUTARIO/`.
 
 ## Pendências `[A CONFIRMAR]`
 - Diagnóstico cobrado ou gratuito; valor.
