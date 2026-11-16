@@ -5,7 +5,7 @@ Versão 1 — 16/11/2026
 | | |
 |---|---|
 | **Dono do POP** | Dr. Alex |
-| **Quem executa** | IA (primeira versão do relatório e do parecer); Dr. Alex (análise e aprovação) |
+| **Quem executa** | IA (agentes `avaliador-capag` e `peca-tributaria`: primeira versão do relatório e do parecer); Dr. Alex (análise e aprovação) |
 | **Gatilho** | Levantamento do passivo concluído (POP-TRIB-02) |
 | **Termina quando** | Parecer aprovado pelo Dr. Alex e reunião de proposta marcada (POP-TRIB-04) |
 | **Prazo** | Até 2 dias úteis após o levantamento |
@@ -30,7 +30,9 @@ portaria vigente na data da análise, nunca de memória**.
 | A IA faz | O Dr. Alex faz |
 |---|---|
 | Lê os extratos e monta o quadro do passivo (por inscrição, tributo, situação) | Confere o quadro com os extratos |
-| Calcula a CAPAG e a faixa (A, B, C, D) e os cenários de desconto e parcela pelo edital informado | Confere a faixa, o edital e os cenários |
+| Lê a faixa e o valor da CAPAG presumida no print do Regularize (a faixa **não se calcula**: a fórmula da PGFN não é pública) | Confere a faixa no Regularize |
+| Agente `avaliador-capag`: diz se vale pedir a revisão da CAPAG (arts. 21 a 34-B da Portaria 6.757) | Decide se pede |
+| Monta os cenários de desconto e parcela pelo edital informado | Confere o edital e os cenários |
 | Aponta possíveis prescrições, decadências e nulidades para conferência | Decide o que se sustenta juridicamente |
 | Redige a primeira versão do parecer | Revisa, ajusta e aprova |
 
@@ -40,13 +42,15 @@ portaria vigente na data da análise, nunca de memória**.
    1. Prescrição do crédito e prescrição intercorrente nas execuções.
    2. Decadência.
    3. Nulidades da CDA.
-   4. Impedimento de 2 anos por transação rescindida (Lei 13.988/2020, art. 4º, § 4º) **(conferir)**.
+   4. Impedimento de 2 anos por transação rescindida (Lei 13.988/2020, art. 4º, § 4º; Portaria PGFN
+      6.757/2022, art. 18).
    5. Elegibilidade ao edital vigente.
    6. CAPAG presumida (a que a PGFN calculou) contra a CAPAG efetiva (a real da empresa).
    7. Execuções fiscais em curso, bloqueios e penhoras.
    8. Riscos de redirecionamento aos sócios e riscos penais (apropriação indébita, por exemplo).
-2. **Decidir a estratégia pela árvore abaixo.** — *D1*
-3. **Escrever o parecer** no timbrado: passivo, CAPAG, análise, elegibilidade, estratégia com
+2. **Decidir a estratégia pela árvore abaixo.** Se houver chance de mudar de faixa, rodar o agente
+   `avaliador-capag` antes de decidir. Teses: `tributario/teses/`; lei: `python tributario/leis/buscar_lei.py`. — *D1*
+3. **Escrever o parecer** no timbrado (agente `peca-tributaria` faz a minuta): passivo, CAPAG, análise, elegibilidade, estratégia com
    cronograma e **três cenários** (conservador, provável, otimista) de desconto, entrada e parcela. — *D2*
 4. **Aprovar** (Dr. Alex) e marcar a reunião de proposta (POP-TRIB-04). — *D2*
 

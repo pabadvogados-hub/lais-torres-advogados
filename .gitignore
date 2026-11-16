@@ -34,3 +34,11 @@ docs/KICKOFF_*
 docs/*transcricao*
 *.mp4
 
+
+# Kit tributario: o banco de leis VAI para o repo; leads, dados da PGFN e casos de cliente NAO
+!tributario/leis/banco_leis.db
+tributario/motor/data/
+tributario/motor/leads/
+tributario/consulta/saida/
+tributario/capag/casos/
+parecer_capag*.md

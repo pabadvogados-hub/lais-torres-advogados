@@ -34,7 +34,10 @@ O Alex tem CNPJ próprio no Maranhão (dados a pedir).
   milionário que o escritório nunca monetizou.
 - **Tributário com êxito sobre proveito econômico**: era 10% nos clientes antigos (mantido), **25%
   para clientes novos**. Poucos processos tributários deram a melhor margem do escritório.
-- Produto novo do Alex: **transação tributária / CAPAG / PGFN** (vai ter tráfego pago).
+- Produto novo do Alex: **transação tributária / CAPAG / PGFN** (vai ter tráfego pago). A caixa de
+  ferramentas está em `tributario/` (produto, método, 21 teses, banco de leis com busca, motor de leads,
+  raio-x por CNPJ, avaliador da CAPAG). Os agentes `avaliador-capag` e `peca-tributaria` e a skill
+  `triagem-tributaria` ficam em `.claude/`. Os POPs são os `pops/POP-TRIB-01` a `06`.
 
 ## Ferramentas que já têm
 

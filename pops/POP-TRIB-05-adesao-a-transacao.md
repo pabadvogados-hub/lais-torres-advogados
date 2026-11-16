@@ -20,7 +20,8 @@ Receita para a PGFN, rever a CAPAG); depois, aderir no edital certo, sem perder 
 1. Emitir o Relatório de Situação Fiscal **no dia do protocolo**.
 2. Separar os débitos declarados, vencidos há mais de 90 dias, não pagos, não inscritos, sem
    parcelamento e sem suspensão. Anotar o que ficou de fora e por quê.
-3. Preencher o formulário de pedido de inscrição em dívida ativa da Receita e endereçar à unidade
+3. Preencher o formulário de pedido de inscrição em dívida ativa da Receita (o agente `peca-tributaria`
+   monta a minuta; tese T01 do banco) e endereçar à unidade
    com jurisdição sobre o contribuinte **(conferir o formulário e o serviço vigentes no e-CAC)**.
 4. Conferir que os totais do relatório, da tabela e do formulário batem.
 5. Protocolar no e-CAC (Processos Digitais) e juntar os documentos **no mesmo dia** (não deixar rascunho).
@@ -32,11 +33,13 @@ Receita para a PGFN, rever a CAPAG); depois, aderir no edital certo, sem perder 
 1. **Escolher uma via, sem misturar**:
    - atacar um dado desatualizado na base da PGFN (faturamento, veículo, imóvel) — mais rápida;
    - demonstrar a CAPAG efetiva com demonstrações contábeis e laudo, com o contador do cliente — mais longa.
-2. Montar o pedido no timbrado, com os documentos.
+2. Rodar o agente `avaliador-capag` (veredito, travas, vetores e documentos do art. 30 que faltam). Só
+   com veredito favorável, o agente `peca-tributaria` monta o pedido no timbrado, com os documentos.
 3. Protocolar no Regularize (serviço de revisão de capacidade de pagamento) **(conferir o caminho no sistema)**.
 4. Antecipar as exigências que costumam vir: fluxo de caixa, distribuição de lucros, mútuos, grupo econômico.
 5. **Só protocolar com o ganho de faixa confirmado nos números e com aprovação do Dr. Alex.**
-   Depois de julgado, novo pedido tem restrições na portaria **(conferir Portaria PGFN 6.757/2022)**.
+   Julgado o pedido, um novo só cabe com fato superveniente ou mudança substancial da CAPAG presumida
+   (Portaria PGFN 6.757/2022, art. 34-B). Recurso da decisão: 10 dias, pelo Regularize (art. 34-A).
 
 ## Passo C — Adesão
 

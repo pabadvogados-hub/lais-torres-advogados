@@ -13,7 +13,7 @@ Versão 1 — 16/11/2026
 ## Objetivo
 
 Levantar **todo** o passivo federal da empresa, no e-CAC (Receita) e no Regularize (PGFN), em PDFs
-padronizados, para o agente de passivo fiscal calcular a CAPAG e os cenários. Antes, isso levava
+padronizados, para o agente de passivo fiscal montar o relatório e os cenários. Antes, isso levava
 horas; com o extrato na mão, a IA faz a análise de vários clientes de uma vez.
 
 ## Automação x pessoa
@@ -46,7 +46,8 @@ horas; com o extrato na mão, a IA faz a análise de vários clientes de uma vez
 5. **Levantar também** (quando houver): dívida ativa estadual (Sefaz do estado) e municipal, e
    execuções fiscais (consulta pública dos tribunais). A transação da PGFN cobre só dívida federal;
    estadual e municipal seguem regras próprias **(conferir com o Dr. Alex)**. — *se houver*
-6. **Rodar o agente de passivo fiscal** com todos os PDFs. O relatório vai para `02_RELATORIOS`. — *D1*
+6. **Rodar o agente de passivo fiscal** com todos os PDFs: no Claude, com a instrução de
+   `tributario/ia/system_prompt_tributarista.md`. O relatório vai para `02_RELATORIOS`. — *D1*
 7. **Criar a tarefa** de análise para o Dr. Alex (POP-TRIB-03). — *D1*
 
 ## O que vira tarefa no ADVBOX

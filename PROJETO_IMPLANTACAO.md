@@ -105,6 +105,9 @@ Custo novo: **só a VPS (~R$ 50/mês)**. Infinitum, ADVBOX, Asaas e Google você
 - **CAPAG automática**: com a procuração do cliente no Regularize/e-CAC, o extrato vai para o
   Claude, que devolve a categoria (A a D) e o desconto possível na transação. Várias CAPAGs de uma vez.
 - POPs comerciais e operacionais do produto (primeiro contato → diagnóstico → proposta → adesão → acompanhamento).
+- **Kit tributário pronto** (`tributario/`): banco de 21 teses, banco de 19 leis com busca por artigo,
+  motor que acha devedores da PGFN no MA, PA, TO e GO, raio-x da empresa para a reunião, avaliador da
+  CAPAG (diz se vale pedir a revisão) e agentes que redigem relatório, parecer e peças para o Alex revisar.
 - **Checklist tributário para os clientes atuais** (oficinas e autopeças com passivo alto): receita que hoje está parada dentro da casa.
 - **Bônus do contrato**: estruturação e gestão do tráfego pago por 90 dias, e treinamento para
   **extrair e enriquecer listas** de prospecção sem depender de agência.

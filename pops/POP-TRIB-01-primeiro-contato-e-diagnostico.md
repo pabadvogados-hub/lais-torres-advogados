@@ -6,7 +6,7 @@ Versão 1 — 16/11/2026
 |---|---|
 | **Dono do POP** | Dr. Alex |
 | **Quem executa** | Comercial `[A CONFIRMAR quem]` (primeiro contato e agendamento); Dr. Alex (reunião de diagnóstico) |
-| **Gatilho** | Lead de tráfego pago do produto tributário, indicação, ou cliente de assessoria com passivo apontado no `CK-DIAG-02` |
+| **Gatilho** | Lead de tráfego pago do produto tributário, lead da lista do motor (`tributario/motor/`), indicação, ou cliente de assessoria com passivo apontado no `CK-DIAG-02` |
 | **Termina quando** | Procuração no e-CAC concedida e POP-TRIB-02 iniciado, ou retorno marcado, ou lead em nutrição |
 | **Prazo** | Primeiro contato em 5 minutos; reunião em até 2 dias úteis; cadência de até 15 dias |
 
@@ -22,7 +22,7 @@ escritório têm débitos altos que nunca foram trabalhados: **cliente de assess
 |---|---|
 | Primeira mensagem em até 5 minutos (MSG-05, modelo 1-T) | Assume a conversa e qualifica |
 | Toques de follow-up da cadência (MSG-05) | Ligações da cadência |
-| Consulta pública da dívida ativa e do CNPJ para o card (quando disponível) | Confere e leva para a reunião |
+| Raio-x do CNPJ (`python tributario/consulta/consultar_cnpj.py <cnpj>`: cadastro, sócios e inscrições na PGFN) e triagem (skill `triagem-tributaria`) | Confere e leva para a reunião |
 | Lembretes da reunião (véspera e 1 hora antes) | Confirma presença e recupera falta |
 
 ## Passo a passo
@@ -38,7 +38,8 @@ escritório têm débitos altos que nunca foram trabalhados: **cliente de assess
    Confirmar ao marcar, na véspera e 1 hora antes. Pedir que o decisor tenha o **gov.br (prata ou ouro)**
    à mão, porque a procuração é feita ali. — *reunião em até 2 dias úteis*
 5. **Deixar no card a consulta pública**: dívida ativa da União, execuções fiscais e situação do CNPJ,
-   para o Dr. Alex abrir na reunião. — *véspera*
+   para o Dr. Alex abrir na reunião. Rodar o raio-x (`tributario/consulta/consultar_cnpj.py`, leva de 20 a
+   25 minutos) e a skill `triagem-tributaria`, que organiza o que já se sabe e o que perguntar. — *véspera*
 6. **Reunião (Dr. Alex)**: — *20 a 30 min*
    1. Entender a empresa e a dívida (no máximo 5 minutos de conversa inicial).
    2. Mostrar na tela o que está público: inscrições, execuções, situação.

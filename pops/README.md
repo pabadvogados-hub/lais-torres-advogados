@@ -29,6 +29,9 @@ a informação ainda depende da Laís ou do Alex: não preencha por conta própr
 | ADM-01 | [Contratação de colaborador](POP-ADM-01-contratacao-de-colaborador.md) | Dra. Laís | Dra. Laís + agente de RH |
 | ADM-02 | [Pagamento mensal da equipe e despesas fixas](POP-ADM-02-pagamento-mensal.md) | Dra. Laís | Agente financeiro + Dra. Laís (aprova) |
 
+Os POPs TRIB usam as ferramentas do kit tributário: [`../tributario/README.md`](../tributario/README.md)
+(motor de leads, raio-x por CNPJ, avaliador da CAPAG, banco de teses e de leis, agentes de peça).
+
 ## 2. Índice dos checklists (`../checklists/`)
 
 **Diagnóstico de entrada da assessoria** — usados uma vez, quando a empresa entra, para montar o

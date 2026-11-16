@@ -1,0 +1,1004 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tributário · Laís Torres &amp; Alex Brunno</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Paleta sóbria (grafite, dourado, marinho e cobre) até o escritório mandar a identidade visual.
+   Escuro é o padrão, como no Instagram; o botão do rodapé troca para o claro. */
+:root{
+  --bg:#0b0d0c; --panel:#131614; --panel-2:#1b1f1c; --ink:#f3eee4; --ink-2:#aaa395; --line:#2b2e2a;
+  --gold:#d4ab5e; --navy:#041f3c; --copper:#a07048;
+  --blue:#d4ab5e; --amber:#e3bd72; --coral:#c98a5c; --teal:#86a9cf; --violet:#6f8fe0; --green:#97b57f; --rose:#dca27c;
+  --warn:#e3b04f; --ok:#7fc08a; --crit:#e5675a;
+  --tint:.14; color-scheme:dark;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --r:12px;
+}
+:root[data-theme="light"]{
+  --bg:#f6f3ec; --panel:#ffffff; --panel-2:#f1ece1; --ink:#0d1a2c; --ink-2:#5b6170; --line:#e3dccd;
+  --gold:#a8792f; --navy:#041f3c; --copper:#a07048;
+  --blue:#a8792f; --amber:#b5832a; --coral:#a4603a; --teal:#1f5487; --violet:#2a4596; --green:#4d7a3a; --rose:#a5583f;
+  --warn:#b07a12; --ok:#2f7d4a; --crit:#b8392f; --tint:.10; color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
+:root[data-theme="dark"]{color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100%}
+/* trilho */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;display:flex;flex-direction:column;gap:4px;padding:20px 14px 20px max(14px,env(safe-area-inset-left,0px));border-right:1px solid var(--line);background:var(--panel)}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px}
+.brand-mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#0a2d55,var(--navy) 70%);box-shadow:0 0 0 2px var(--panel),0 0 0 3px color-mix(in srgb,var(--gold) 55%,transparent);color:#c98a5c;font:800 14px/1 var(--f-display);font-stretch:85%;letter-spacing:.02em;flex:none}
+.brand b{font:800 15px/1.1 var(--f-display);font-stretch:90%;text-transform:uppercase;letter-spacing:.01em;display:block}
+.ouro{color:var(--gold)}
+.brand small{color:var(--ink-2);font-size:12px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav button{all:unset;cursor:pointer;display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:9px;color:var(--ink-2);font-weight:500;font-size:14px;transition:background .2s,color .2s}
+.nav button:hover{background:var(--panel-2);color:var(--ink)}
+.nav button:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+.nav button[aria-current="page"]{background:color-mix(in srgb,var(--c) calc(var(--tint)*100%),transparent);color:var(--ink)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 22%,transparent)}
+.nav .count{margin-left:auto;font:500 12px var(--f-mono);color:var(--ink-2)}
+.rail-foot{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:8px}
+.theme{all:unset;cursor:pointer;display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2)}
+.theme:focus-visible{outline:2px solid var(--blue)}
+/* palco */
+.stage{position:relative;min-width:0;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow:hidden}
+.screen{max-width:1080px;margin:0 auto;animation:entra .55s cubic-bezier(.2,.8,.2,1) both}
+.screen.volta{animation-name:entraVolta}
+@keyframes entra{from{opacity:0;transform:translateX(56px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes entraVolta{from{opacity:0;transform:translateX(-56px) scale(.985)}to{opacity:1;transform:none}}
+.screen > *{animation:sobe .6s cubic-bezier(.2,.8,.2,1) both}
+.screen > *:nth-child(2){animation-delay:.05s}.screen > *:nth-child(3){animation-delay:.1s}.screen > *:nth-child(4){animation-delay:.15s}.screen > *:nth-child(5){animation-delay:.2s}.screen > *:nth-child(n+6){animation-delay:.25s}
+@keyframes sobe{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen,.screen > *{animation:none!important}}
+.eyebrow{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--c,var(--blue));display:flex;align-items:center;gap:8px}
+h1{font:800 clamp(28px,4.6vw,48px)/1.02 var(--f-display);font-stretch:86%;text-transform:uppercase;letter-spacing:-.005em;margin:12px 0 12px;text-wrap:balance}
+h2{font:760 21px/1.15 var(--f-display);font-stretch:94%;margin:0 0 12px;text-wrap:balance}
+h3{font:650 16px/1.25 var(--f-body);margin:0}
+.lead{font-size:17px;color:var(--ink-2);max-width:64ch;margin:0 0 26px}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.card.tinted{background:color-mix(in srgb,var(--c) calc(var(--tint)*100%),var(--panel));border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
+.click{cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s;text-align:left;width:100%}
+.click:hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 10px 30px -14px color-mix(in srgb,var(--c) 70%,transparent)}
+.click:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.section{margin-top:34px}
+.muted{color:var(--ink-2)}
+.mono{font-family:var(--f-mono)}
+.big{font:780 40px/1 var(--f-display);font-stretch:115%;color:var(--c);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:6px;font:600 11.5px/1 var(--f-mono);letter-spacing:.04em;padding:6px 9px;border-radius:99px;background:color-mix(in srgb,var(--c) calc(var(--tint)*140%),transparent);color:var(--c);white-space:nowrap}
+.pill.warn{--c:var(--warn)}.pill.ok{--c:var(--ok)}.pill.crit{--c:var(--crit)}
+.hero{position:relative;border-radius:18px;padding:34px 30px;overflow:hidden;background:radial-gradient(120% 140% at 100% 0%,color-mix(in srgb,var(--navy) 85%,transparent),transparent 60%),var(--panel);border:1px solid color-mix(in srgb,var(--gold) 30%,var(--line))}
+:root[data-theme="light"] .hero{background:radial-gradient(120% 140% at 100% 0%,color-mix(in srgb,var(--gold) 14%,transparent),transparent 60%),var(--panel)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9;pointer-events:none}
+.hero > *:not(canvas){position:relative}
+/* fases */
+.fase{display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--c)}
+.fase .n{font:700 13px var(--f-mono);color:var(--c)}
+/* fluxo */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.lane-title{grid-column:1/-1;margin-top:10px;display:flex;align-items:center;gap:10px}
+.step{all:unset;box-sizing:border-box;cursor:pointer;position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 14px 14px 16px;min-height:92px;display:flex;flex-direction:column;gap:6px;transition:transform .25s,border-color .25s}
+.step:hover{transform:translateY(-3px);border-color:var(--c)}
+.step:focus-visible{outline:2px solid var(--c)}
+.step::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--c)}
+.step.dec{border-style:dashed}
+.step.main{background:color-mix(in srgb,var(--c) calc(var(--tint)*120%),var(--panel));border-color:var(--c)}
+.step small{color:var(--ink-2);font-size:12.5px}
+.step .tag{font:500 11px var(--f-mono);color:var(--c)}
+.flow-note{font-size:12.5px;color:var(--ink-2)}
+/* org */
+.org-top{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.org-top .card{width:260px;text-align:center}
+.org-link{height:28px;position:relative;margin:0 auto;max-width:760px}
+.org-link::before{content:"";position:absolute;left:16%;right:16%;top:50%;border-top:1.5px solid var(--line)}
+.role{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel)}
+.role.open{border:1.5px dashed var(--warn)}
+.role span{font-size:12.5px;color:var(--ink-2)}
+/* cadência */
+.cad{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;position:relative}
+.cad .t{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;font-size:12.5px}
+.cad .t b{display:block;font:700 15px var(--f-mono);color:var(--amber)}
+.funil{display:flex;flex-wrap:wrap;gap:8px}
+.funil span{padding:8px 12px;border-radius:99px;border:1px solid var(--line);background:var(--panel);font-size:13px}
+.funil span b{font-family:var(--f-mono);color:var(--amber);margin-right:6px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+/* POP */
+.pop-head{border-radius:18px;padding:28px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 22%,var(--panel)),var(--panel) 70%);border:1px solid color-mix(in srgb,var(--c) 35%,var(--line))}
+.meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px}
+.meta div{min-width:0}
+.meta dt{font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.meta dd{margin:2px 0 0;font-weight:500}
+.steps{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:10px;counter-reset:s}
+.steps > li{counter-increment:s;display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:14px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:opacity .3s,border-color .3s}
+.steps > li::before{content:counter(s);width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font:700 14px var(--f-mono);color:var(--c);background:color-mix(in srgb,var(--c) calc(var(--tint)*150%),transparent)}
+.steps > li.feito{opacity:.55;border-color:var(--ok)}
+.steps ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2);font-size:14px}
+.steps ul li{margin:3px 0}
+.chk{width:22px;height:22px;accent-color:var(--ok);margin-top:4px;cursor:pointer}
+.tree td:first-child{width:46%}
+.popnav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel);font-weight:500;font-size:14px}
+.btn:hover{border-color:var(--c,var(--blue))}
+.btn:focus-visible{outline:2px solid var(--blue)}
+.note{margin-top:18px;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--warn) calc(var(--tint)*100%),var(--panel));border:1px solid color-mix(in srgb,var(--warn) 40%,var(--line));font-size:14px}
+/* teses */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.chip{all:unset;cursor:pointer;padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:var(--panel);font-size:13px;display:inline-flex;gap:7px;align-items:center}
+.chip[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) calc(var(--tint)*130%),var(--panel))}
+.chip:focus-visible{outline:2px solid var(--blue)}
+.search{flex:1 1 220px;min-width:0;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit}
+.tese{display:flex;flex-direction:column;gap:10px}
+.tese .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.tese .id{font:600 12px var(--f-mono);color:var(--c)}
+.tese dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 12px;margin:0;font-size:13.5px}
+.tese dt{color:var(--ink-2);font:600 11px/1.9 var(--f-mono);text-transform:uppercase;letter-spacing:.05em}
+.tese dd{margin:0}
+.empty{padding:28px;text-align:center;color:var(--ink-2)}
+.check li{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check{padding:0;margin:0}
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.timeline .card{border-top:4px solid var(--c)}
+.timeline ul{margin:8px 0 0;padding-left:18px;font-size:14px}
+/* menu do celular */
+.topbar{display:none}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .rail{display:none}
+  .topbar{display:flex;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;gap:6px;overflow-x:auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:var(--panel);border-bottom:1px solid var(--line)}
+  .topbar button{all:unset;cursor:pointer;flex:none;display:flex;gap:7px;align-items:center;padding:7px 11px;border-radius:99px;border:1px solid var(--line);font-size:13px}
+  .topbar button[aria-current="page"]{border-color:var(--c);background:color-mix(in srgb,var(--c) calc(var(--tint)*130%),transparent)}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3,.g2,.timeline{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cad{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .tese dl{grid-template-columns:1fr}
+  .steps > li{grid-template-columns:34px minmax(0,1fr) auto}
+}
+@media (max-width:440px){.g4{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.hero{padding:24px 18px}}
+/* grupos do menu */
+.rail{overflow-y:auto}
+.nav-g{font:600 10.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);opacity:.7;padding:14px 10px 6px}
+.nav-g:first-child{padding-top:0}
+.busca-btn{all:unset;cursor:pointer;display:flex;align-items:center;gap:9px;margin:0 2px 10px;padding:8px 10px;border-radius:9px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink-2);font-size:13.5px}
+.busca-btn:hover{color:var(--ink);border-color:var(--blue)}
+.busca-btn:focus-visible{outline:2px solid var(--blue)}
+.busca-btn kbd,.kbd{margin-left:auto;font:500 11px var(--f-mono);padding:2px 6px;border-radius:5px;border:1px solid var(--line);background:var(--panel)}
+/* busca geral */
+.sb{position:fixed;inset:0;z-index:50;display:none;align-items:flex-start;justify-content:center;padding:10vh 16px 16px;background:color-mix(in srgb,var(--ink) 35%,transparent);backdrop-filter:blur(3px)}
+.sb.aberto{display:flex}
+.sb-box{width:min(640px,100%);max-height:72vh;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 80px -30px rgba(0,0,0,.5);overflow:hidden}
+.sb-box input{all:unset;box-sizing:border-box;width:100%;padding:16px 18px;font-size:16px;border-bottom:1px solid var(--line)}
+.sb-res{overflow-y:auto;padding:6px}
+.sb-res button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:10px 12px;border-radius:10px}
+.sb-res button:hover,.sb-res button.sel{background:color-mix(in srgb,var(--c) calc(var(--tint)*130%),var(--panel-2))}
+.sb-res .k{grid-row:span 2;align-self:center;font:600 11px var(--f-mono);color:var(--c);min-width:62px}
+.sb-res .t{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-res .d{font-size:12.5px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-vazio{padding:22px;text-align:center;color:var(--ink-2);font-size:14px}
+/* kit */
+.chain{display:flex;flex-direction:column;gap:0;counter-reset:k}
+.elo{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding-bottom:16px}
+.elo::before{counter-increment:k;content:counter(k);width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:700 15px var(--f-mono);color:#fff;background:var(--c);z-index:1}
+.elo:not(:last-child)::after{content:"";position:absolute;left:19px;top:44px;bottom:0;width:2px;background:linear-gradient(var(--c),var(--line))}
+.elo .card{display:flex;flex-direction:column;gap:8px}
+.elo .row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.cmd{display:flex;align-items:center;gap:8px;background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:8px 8px 8px 12px;font:13px var(--f-mono);min-width:0}
+.cmd code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap}
+.copiar{all:unset;cursor:pointer;flex:none;font:600 11px var(--f-mono);padding:5px 8px;border-radius:6px;border:1px solid var(--line);background:var(--panel)}
+.copiar:hover{border-color:var(--blue)}
+.copiar:focus-visible{outline:2px solid var(--blue)}
+/* avaliador CAPAG */
+.cap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
+.cap-out{position:sticky;top:20px}
+.fs{border:0;margin:0;padding:0;display:grid;gap:12px;min-width:0;min-inline-size:0}
+.fs + .fs{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.fs legend{font:600 11.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c);padding:0;margin-bottom:12px}
+.campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.campo{display:flex;flex-direction:column;gap:5px;min-width:0}
+.campo > span{font-size:12.5px;color:var(--ink-2);font-weight:500}
+.campo input:not([type=checkbox]),.campo select{padding:9px 11px;border-radius:9px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font:inherit;font-size:14px;min-width:0;width:100%}
+.campo input:focus,.campo select:focus{outline:2px solid color-mix(in srgb,var(--c) 60%,transparent);border-color:var(--c)}
+.full{grid-column:1/-1}
+.marca{display:flex;gap:9px;align-items:flex-start;font-size:14px;cursor:pointer}
+.marca input{width:18px;height:18px;accent-color:var(--c);margin-top:2px;flex:none}
+.docs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}
+.cred{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:end;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.cred .marca{font-size:12.5px;align-self:center}
+.x{all:unset;cursor:pointer;width:30px;height:34px;display:grid;place-items:center;border-radius:8px;color:var(--ink-2)}
+.x:hover{color:var(--crit);background:var(--panel-2)}
+.veredito{border-radius:14px;padding:18px;border:1.5px solid var(--c);background:color-mix(in srgb,var(--c) calc(var(--tint)*120%),var(--panel))}
+.veredito .v{font:760 21px/1.15 var(--f-display);font-stretch:108%;color:var(--c);margin-top:6px;text-wrap:balance}
+.blk{margin-top:16px}
+.blk h3{display:flex;align-items:center;gap:8px;font-size:14px;margin-bottom:8px}
+.blk ul{margin:0;padding-left:18px;font-size:13.5px}
+.blk li{margin:5px 0}
+.blk li ul{margin-top:4px;color:var(--ink-2)}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;z-index:60;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;transition:opacity .25s,transform .25s;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:960px){.cap{grid-template-columns:minmax(0,1fr)}.cap-out{position:static}}
+@media (max-width:560px){.campos,.docs{grid-template-columns:1fr}.cred{grid-template-columns:1fr 1fr}.cred .campo:first-child{grid-column:1/-1}}
+@media print{
+  .rail,.topbar,.popnav,.busca-btn,.sb,.chk,.acoes,.filters{display:none!important}
+  .app{display:block}.stage{padding:0}
+  .screen,.screen > *{animation:none!important}
+  body{background:#fff;color:#000}
+  .card,.steps > li,.tbl{break-inside:avoid}
+}
+</style>
+
+<div class="app">
+  <aside class="rail" aria-label="Telas">
+    <div class="brand"><div class="brand-mark" aria-hidden="true">LA</div><div><b>Laís Torres &amp; Alex Brunno</b><small>Tributário · PGFN</small></div></div>
+    <button class="busca-btn" type="button" data-busca><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar<kbd>Ctrl K</kbd></button>
+    <nav class="nav" id="nav"></nav>
+    <div class="rail-foot">
+      <button class="theme" id="tema" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span>Claro / escuro</span></button>
+      <small class="muted">Produto do Dr. Alex · versão de 16/11/2026</small>
+    </div>
+  </aside>
+  <div style="min-width:0">
+    <div class="topbar" id="topbar" aria-label="Telas"></div>
+    <main class="stage" id="stage" tabindex="-1"></main>
+  </div>
+</div>
+<div class="sb" id="sb" role="dialog" aria-modal="true" aria-label="Buscar no painel">
+  <div class="sb-box"><input id="sb-q" type="search" placeholder="Buscar POP, tese, lei ou tela…" autocomplete="off" aria-label="Buscar"><div class="sb-res" id="sb-res" role="listbox"></div></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const TESES = /*TESES*/[{"id": "T01", "area": "Remessa à DAU e MS", "titulo": "Remessa RFB para PGFN após 90 dias (MS)", "tese": "Débito declarado e vencido há mais de 90 dias, ainda na RFB, dá direito à remessa para inscrição em DAU, sem depender de edital aberto. Cabe MS para obrigar a remessa.", "quando": "Débito declarado, vencido há mais de 90 dias, sem parcelamento ativo nem exigibilidade suspensa. Requerimento administrativo antes do MS.", "fundamento": "DL 147/1967, art. 22; Portaria MF 447/2018, art. 2º; Lei 13.988/2020, art. 2º, I; Lei 12.016/2009, art. 7º, III", "juris": "TRF4 5052988-32.2022.4.04.7100; TRF4 AG 5000987-93.2023.4.04.0000; TRF3 RemNecCiv 5003096-82.2024.4.03.6108", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Pedido genérico é negado; débito indevido no pedido gera indeferimento. Confirmar vigência da Portaria MF 447/2018."}, {"id": "T02", "area": "Remessa à DAU e MS", "titulo": "Foro do DF no MS (art. 109, §2º, CF)", "tese": "MS pode ser impetrado no DF por foro concorrente do art. 109, §2º, da CF. É opção do impetrante. Se pedir afastar data de corte, a PGFN integra o polo passivo.", "quando": "Domicílio distante de Brasília e prazo de adesão próximo, ou pedido de afastar data de corte. Sem urgência, impetrar no domicílio.", "fundamento": "CF, art. 109, §2º e art. 5º, LXIX; Lei 12.016/2009, art. 2º (define autoridade federal, não foro)", "juris": "STF RE 627.709/DF (Tema 374); STJ CC 172.020; MS 1008865-04.2026.4.01.3400 (8ª Vara Federal DF)", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Precedentes prendem à sede funcional da autoridade; risco de declínio perto do prazo. Teor dos julgados não conferido."}, {"id": "T03", "area": "CAPAG", "titulo": "Pedido de revisão da CAPAG-P pedindo D", "tese": "Capacidade presumida revista a pedido do contribuinte, pelo REGULARIZE, com valor estimado, metodologia e documentos do art. 30. Pede-se classificação D, não faixa intermediária.", "quando": "Classificação A, B ou C com capacidade presumida incompatível com a real; laudo mostra capacidade efetiva abaixo da dívida.", "fundamento": "Port. PGFN 6.757/2022, arts. 21 §2º, 23, 24 IV, 27 a 34, 34-A e 34-B; red. Portarias 1.241/2023 e 1.457/2024", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Protocolo só pelo REGULARIZE; não suspende cobrança; números da peça têm de bater com o laudo. Corte de 50% não está no art. 24."}, {"id": "T04", "area": "CAPAG", "titulo": "Via 1 (vetor errado) x Via 2 (efetiva)", "tese": "Vetor errado se ataca direto (Via 1). Com contabilidade organizada, a CAPAG efetiva (Via 2), com BP, DRE e DFC pelo método direto, tem resultado mais robusto.", "quando": "Via 1: PGDAS de regime antigo, bem vendido, DOI de operação pontual. Via 2: balanço e DFC dos dois últimos exercícios e do corrente.", "fundamento": "Port. PGFN 6.757/2022, arts. 23, 30 (documentos; DFC pelo método direto) e 32", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Via 2 leva 60 a 90 dias e depende do contador; DFC indireto gera exigência. Laudo e pedido usam metodologias diferentes."}, {"id": "T05", "area": "CAPAG", "titulo": "Revisão da CAPAG só com ganho de faixa", "tese": "Julgado o pedido de revisão, um novo só cabe com fato superveniente ou mudança substancial da CAPAG presumida. Pedir só após simulação que confirme ganho de faixa com desconto.", "quando": "Antes de qualquer pedido de revisão: comparar presumida, efetiva estimada e edital vigente.", "fundamento": "Port. PGFN 6.757/2022, art. 34-B (incl. Port. 1.241/2023); art. 30 (instrução do pedido)", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Pedido mal instruído trava a faixa até surgir fato novo. Se a recalculada for maior que a presumida, a revisão piora."}, {"id": "T06", "area": "Entrada e parcelamentos", "titulo": "Entrada indevida (14-A): transação não conta", "tese": "A entrada de 10% ou 20% do art. 14-A só vale para reparcelamento de débito que já esteve em parcelamento. Transação rescindida não conta como histórico.", "quando": "Simulação na PGFN cobra 10% ou 20% após rescisão de transação, em débito que nunca foi parcelado ou foi menos vezes do que o sistema conta.", "fundamento": "Lei 10.522/2002, art. 14-A, caput e §2º (Lei 11.941/2009); Port. PGFN 448/2019, art. 17, §§2º e 3º; CTN, arts. 151, VI, 156, III, 171", "juris": "TRF4 contrário (10% após transação rescindida): número a localizar (LegJur 566.8010.8746.5157)", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "TRF4 contrário sem número. PGFN invoca art. 3º, §2º da Lei 13.988 e art. 17, §3º da Portaria. Não citar Lei 13.043/2014."}, {"id": "T07", "area": "Entrada e parcelamentos", "titulo": "Separar pedidos por faixa (inscrição inteira)", "tese": "A Portaria 448 aplica a maior faixa ao pedido inteiro se entrar inscrição com histórico de reparcelamento. Formalizar pedidos separados por faixa, sem desmembrar competências.", "quando": "Pedido único que mistura inscrição de 20% com inscrições de 10% ou sem entrada. Testar a separação no portal antes de peticionar.", "fundamento": "Port. PGFN 448/2019, arts. 3º, §1º, 7º e 17, §1º, II", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Portal pode não aceitar adesão direta: a unidade cadastra. Parcelamento da RFB fora do Simples e PGFN especial têm regras (§§2º e 3º)."}, {"id": "T08", "area": "Prescrição e decadência", "titulo": "Prescrição administrativa de 5 anos (CTN 174)", "tese": "Crédito constituído há mais de 5 anos sem causa interruptiva está prescrito. Parcelamento, transação ou confissão reinicia a contagem e pode gerar renúncia.", "quando": "Débito antigo, sem parcelamento ou ação recente, antes de propor qualquer proposta de transação.", "fundamento": "CTN, art. 174 e parágrafo único (I a IV); art. 165 (restituição)", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Quem aderiu a parcelamento ou transação em geral renunciou à prescrição. Conferir data de constituição definitiva de cada tributo."}, {"id": "T09", "area": "Prescrição e decadência", "titulo": "Prescrição intercorrente na EF (Tema 566)", "tese": "Na execução fiscal, a intercorrente corre automaticamente após 1 ano de suspensão sem bens, sem despacho. Só citação válida ou constrição efetiva a interrompem.", "quando": "EF com devedor ou bens não localizados, arquivamento provisório, ou bloqueios sem resultado.", "fundamento": "Lei 6.830/1980, art. 40; CTN, art. 174", "juris": "STJ Tema 566 (REsp 1.340.553/RS)", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Tese do POP sobre exceção de pré-executividade como citação positiva é interpretação não conferida. Ler o inteiro teor."}, {"id": "T10", "area": "Prescrição e decadência", "titulo": "Decadência: art. 150, §4º x 173, I", "tese": "Havendo pagamento ou declaração, 5 anos do fato gerador (art. 150, §4º). Havendo omissão total ou fraude, 5 anos do exercício seguinte (art. 173, I).", "quando": "Auto de infração ou lançamento de ofício sobre tributo por homologação (Simples, PIS, COFINS, ICMS, IRPJ).", "fundamento": "CTN, art. 150, §4º e art. 173, I", "juris": "STJ Tema 163", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "A escolha depende de prova (pagamento, declaração, dolo). POP diz auto nulo de pleno direito: tratar como argumento a confirmar."}, {"id": "T11", "area": "Nulidade da CDA e multas", "titulo": "Nulidade formal da CDA", "tese": "CDA sem os requisitos do art. 202 do CTN e do art. 2º, §5º, da LEF é nula. Conferir nome, domicílio, valor, juros, origem, data e número da inscrição.", "quando": "Ao receber execução fiscal ou analisar DAU, antes de exceção ou embargos.", "fundamento": "CTN, art. 202; Lei 6.830/1980, art. 2º, §5º", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "LEF permite substituir ou emendar a CDA até a sentença de primeiro grau (art. 2º, §8º, conferir). Nulidade formal nem sempre extingue."}, {"id": "T12", "area": "Nulidade da CDA e multas", "titulo": "Multa, encargo e juros: temas do STF", "tese": "Conferir na CDA a multa (Tema 214/STF), o encargo do DL 1.025/1969 (Tema 408/STF) e a Selic (Tema 810/STF). Parcela indevida reduz o consolidado e muda a faixa.", "quando": "CDA com multa acima do limite do STF, encargo legal sobre base errada ou juros fora do índice fixado.", "fundamento": "DL 1.025/1969 (encargo legal); temas do STF citados", "juris": "STF Temas 214, 408 e 810", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Fonte só lista os temas, sem teor. Ler a tese fixada antes de citar o alcance. O limite de 20% é do tema, não de todo encargo."}, {"id": "T13", "area": "Execução fiscal e defesa", "titulo": "EPE sem garantia; embargos com garantia", "tese": "EPE sem garantia só para ordem pública com prova pré-constituída, sem dilação. Embargos exigem garantia integral; anulatória exige depósito do montante integral.", "quando": "EF não garantida: EPE se a tese está em documento já nos autos; embargos se o mérito exige prova e há garantia.", "fundamento": "Lei 6.830/1980, art. 16, §1º (conferir); CTN, art. 151, II (depósito); Súmula 393/STJ (conferir)", "juris": "Súmula 393/STJ (conferir teor); precedente a localizar", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "conferir", "risco": "Art. 16, §1º da LEF e Súmula 393 não estão nas fontes: checar. Sem prova pré-constituída a EPE é indeferida."}, {"id": "T14", "area": "Responsabilidade de sócios", "titulo": "Redirecionamento ao sócio (Súm. 430 e 435)", "tese": "Mero inadimplemento não autoriza redirecionamento ao sócio (Súm. 430/STJ); dissolução irregular autoriza (Súm. 435/STJ). O ônus da prova é da Fazenda (Tema 962/STJ).", "quando": "EF contra Ltda. ativa ou inativa com pedido de inclusão do sócio-administrador no polo passivo.", "fundamento": "CTN, art. 135, III; Súmulas 430, 435 e 392 do STJ", "juris": "STJ Súm. 430 e 435; Súm. 392; Tema 962 (REsp 1.643.944/SP)", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Verificar situação cadastral: dissolução irregular favorece a Fazenda pela Súmula 435. Ato com excesso exige prova."}, {"id": "T15", "area": "Simples Nacional", "titulo": "Débito do Simples fora da Portaria 448", "tese": "Débito do Simples não segue a Portaria 448/2019. Base é o art. 21, §18, da LC 123/2006 e o CGSN, com modalidade própria; transação não é parcelamento para entrada.", "quando": "Cliente do Simples com inscrições a parcelar ou simulação que devolve modalidade indisponível.", "fundamento": "Port. PGFN 448/2019, art. 2º, §2º, II; LC 123/2006, art. 21, §18; Lei 13.988/2020, art. 3º", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Conferir Resolução CGSN 140/2018 antes de citar. POP de análise se contradiz sobre PARCSN rescindido (índice, ponto 4)."}, {"id": "T16", "area": "Simples Nacional", "titulo": "Enquadramento extemporâneo no Simples", "tese": "Dívida retida por omissão ilegal da RFB, regularizada por MS, permitiria pedir enquadramento no Simples com efeitos retroativos. Tese do escritório, sem julgado.", "quando": "Cliente excluído ou em risco de exclusão do Simples por débito, com prazo de 30/09 próximo.", "fundamento": "LC 123/2006, art. 16 (janela de reingresso, via POP); razoabilidade e preservação da empresa", "juris": "Nenhuma nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "conferir", "risco": "Peça diz 2026 na seção V.1 e 2027 no pedido g. Receita tende a recusar. Usar como pedido subsidiário; conferir art. 16 da LC 123."}, {"id": "T17", "area": "Transação", "titulo": "Impedimento de 2 anos após rescisão", "tese": "Rescisão de transação (qualquer modalidade) veda nova transação por 2 anos da rescisão, inclusive para débitos distintos. Parcelamento convencional rescindido não gera esse impedimento.", "quando": "Rescisão no SISPAR nos últimos 24 meses (aba Ocorrências): transação por adesão e individual bloqueadas.", "fundamento": "Lei 13.988/2020, art. 4º, §4º; Port. PGFN 6.757/2022, arts. 18 e 64, I", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "POP de análise contradiz-se sobre PARCSN (seção 6.4 x 10.1). PERT e RELP: caso a caso. Tese de não retroatividade tem baixa chance."}, {"id": "T18", "area": "Transação", "titulo": "Rescisão x cancelamento (duas notificações)", "tese": "Só a rescisão gera impedimento, após duas notificações da PGFN (30 dias para impugnar; 10 para recurso). Cancelamento por parcela não paga não gera impedimento.", "quando": "Parcela atrasada, notificação da PGFN ou 1ª parcela vencida em negociação ativa.", "fundamento": "Edital PGDAU 6/2026, arts. 19 a 22 (conferir); Port. 6.757/2022, art. 18; Port. RFB 555/2025, art. 39", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "conferir", "risco": "Prazos e números dos editais mudam: conferir no dia. Pagar só as atrasadas não evita rescisão na 2ª notificação. Avisar o titular."}, {"id": "T19", "area": "Transação", "titulo": "Data de corte e afastamento no MS", "tese": "Edital pode excluir inscrições recentes. A Portaria 6.757 veda edital com crédito inscrito há menos de 90 dias; MS pede afastar a limitação, com a PGFN no polo.", "quando": "Débito inscrito em DAU depois da data de corte, com prazo de adesão correndo.", "fundamento": "Port. PGFN 6.757/2022, art. 41, §1º, II, a (incl. Port. 1.457/2024); Lei 13.988/2020, art. 2º", "juris": "MS 1008865-04.2026.4.01.3400 (8ª Vara Federal Cível DF): liminar e segurança parcial (descrito no modelo)", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Precedente de primeiro grau citado no modelo, não conferido por nós. Data de corte varia por modalidade. Risco de declínio."}, {"id": "T20", "area": "Transação", "titulo": "TIS: transação individual de R$ 1 a 10 mi", "tese": "Débito de R$ 1 a 10 milhões pode ter transação individual simplificada, com proposta única: entrada, prazo, desconto pela capacidade, garantias e documentos.", "quando": "Débito nessa faixa sem edital aberto ou acima do teto do edital; também fora de edital com garantias.", "fundamento": "Port. PGFN 6.757/2022, arts. 64, §1º (elementos I a V) e 66, §1º; Lei 13.988/2020, art. 2º, I", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Sem resposta da PGFN em 10 dias, o pedido é encerrado. Cronograma padrão do POP é regra do escritório, não da lei."}, {"id": "T21", "area": "Transação", "titulo": "NJP para quem está impedido", "tese": "Com transação vedada, o NJP (Port. PGFN 742/2018, base no CPC art. 190) calendariza a dívida em até 120 meses, com garantias atípicas e sem desconto.", "quando": "Cliente impedido (T17), sem caixa para parcelamento de 60 meses, com garantias ou faturamento a oferecer.", "fundamento": "Port. PGFN 742/2018; CPC, art. 190", "juris": "Nenhuma citada nas fontes", "modelo": "A montar com as peças reais do escritório (Módulo 6)", "status": "verificado", "risco": "Sem desconto. Garantia em % do faturamento exige tabela. Não esbarra em impedimento é tese do POP, não julgado. Conferir os 120 meses."}]/*FIM*/;
+const LEIS = /*LEIS*/[{"sigla": "CTN", "nome": "Codigo Tributario Nacional - Lei 5.172/1966", "uso": "prescricao (174), decadencia (150 par.4 e 173), fraude (185), responsabilidade (134/135), CDA (202/203)", "url": "https://www.planalto.gov.br/ccivil_03/leis/l5172compilado.htm", "artigos": 231}, {"sigla": "LEF", "nome": "Lei de Execucoes Fiscais - Lei 6.830/1980", "uso": "execucao fiscal, prescricao intercorrente (40), garantia, embargos", "url": "https://www.planalto.gov.br/ccivil_03/leis/l6830.htm", "artigos": 42}, {"sigla": "L13988", "nome": "Lei da Transacao Tributaria - Lei 13.988/2020", "uso": "transacao por adesao e individual, descontos, prazos, rescisao e impedimento", "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l13988.htm", "artigos": 38}, {"sigla": "L10522", "nome": "Lei 10.522/2002 (CADIN, parcelamentos)", "uso": "parcelamento convencional, entrada do reparcelamento (14-A), NJP (19)", "url": "https://www.planalto.gov.br/ccivil_03/leis/2002/l10522.htm", "artigos": 72}, {"sigla": "L11941", "nome": "Lei 11.941/2009", "uso": "origem do art. 14-A (reparcelamento)", "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11941.htm", "artigos": 69}, {"sigla": "L13496", "nome": "Lei 13.496/2017 (PERT)", "uso": "PERT: conta como parcelamento anterior", "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13496.htm", "artigos": 16}, {"sigla": "DL147", "nome": "Decreto-Lei 147/1967 (Lei Organica da PGFN)", "uso": "art. 22: dever de remessa dos debitos a PGFN (base do MS de remessa)", "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del0147.htm", "artigos": 62}, {"sigla": "L9784", "nome": "Lei 9.784/1999 (Processo Administrativo Federal)", "uso": "arts. 48-50: dever de decidir em 30 dias (omissao no pedido de remessa)", "url": "https://www.planalto.gov.br/ccivil_03/leis/l9784.htm", "artigos": 80}, {"sigla": "L12016", "nome": "Lei 12.016/2009 (Mandado de Seguranca)", "uso": "cabimento, autoridade coatora, liminar (7, III)", "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l12016.htm", "artigos": 30}, {"sigla": "LC123", "nome": "Lei Complementar 123/2006 (Simples Nacional)", "uso": "exclusao do Simples, parcelamento do Simples (21 par.15-24), reingresso", "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm", "artigos": 133}, {"sigla": "PAF", "nome": "Decreto 70.235/1972 (Processo Administrativo Fiscal)", "uso": "impugnacao, prazos, contencioso administrativo", "url": "https://www.planalto.gov.br/ccivil_03/decreto/d70235cons.htm", "artigos": 73}, {"sigla": "L8137", "nome": "Lei 8.137/1990 (crimes contra a ordem tributaria)", "uso": "risco penal: apropriacao (2, II)", "url": "https://www.planalto.gov.br/ccivil_03/leis/l8137.htm", "artigos": 19}, {"sigla": "L10684", "nome": "Lei 10.684/2003", "uso": "art. 9: suspensao da pretensao punitiva com parcelamento", "url": "https://www.planalto.gov.br/ccivil_03/leis/2003/l10.684.htm", "artigos": 28}, {"sigla": "L14375", "nome": "Lei 14.375/2022 (alterou a 13.988)", "uso": "ampliacao da transacao: prejuizo fiscal, prazo de 120 meses", "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14375.htm", "artigos": 17}, {"sigla": "CPC", "nome": "Codigo de Processo Civil - Lei 13.105/2015", "uso": "tutela de urgencia (294, 300), negocio juridico processual (190), agravo (1.015)", "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm", "artigos": 1078}, {"sigla": "PORT6757", "nome": "Portaria PGFN 6.757/2022 (regulamenta a transacao)", "uso": "CAPAG presumida e efetiva (arts. 20-31), irreversibilidade (30), impedimento (64)", "url": "https://www.normaslegais.com.br/legislacao/portaria-pgfn-6757-2022.htm", "artigos": 92}, {"sigla": "PORT448", "nome": "Portaria PGFN 448/2019 (parcelamento na PGFN)", "uso": "art. 17: entrada do reparcelamento por inscricao; separacao (7)", "url": "https://www.normaslegais.com.br/legislacao/portaria-pgfn-448-2019.htm", "artigos": 33}, {"sigla": "PORTMF447", "nome": "Portaria MF 447/2018 (prazo de remessa a PGFN)", "uso": "art. 2: 90 dias na RFB para encaminhar a PGFN", "url": "https://www.legisweb.com.br/legislacao/?id=368654", "artigos": 3}, {"sigla": "PORT742", "nome": "Portaria PGFN 742/2018 (negocio juridico processual)", "uso": "NJP: alternativa quando ha impedimento de transacao", "url": "https://www.legisweb.com.br/legislacao/?id=373099", "artigos": 17}]/*FIMLEIS*/;
+const MOTOR = /*MOTOR*/{"lote": 400, "trimestre": "", "empresas": 0, "consultadas": 0, "leads": 0, "rodada": "ainda não rodou no escritório"}/*FIMMOTOR*/;
+
+const C = {blue:'var(--blue)',amber:'var(--amber)',coral:'var(--coral)',teal:'var(--teal)',violet:'var(--violet)',green:'var(--green)',rose:'var(--rose)'};
+
+const TELAS = [
+  {id:'inicio', nome:'Visão geral', cor:C.blue, g:'Produto'},
+  {id:'kit', nome:'O kit, passo a passo', cor:C.green, g:'Produto'},
+  {id:'fluxo', nome:'Fluxograma', cor:C.teal, g:'Produto'},
+  {id:'organograma', nome:'Organograma', cor:C.violet, g:'Produto'},
+  {id:'comercial', nome:'Comercial', cor:C.amber, g:'Produto'},
+  {id:'metodo', nome:'Método em 6 etapas', cor:C.coral, g:'Execução'},
+  {id:'pops', nome:'POPs', cor:C.coral, count:10, g:'Execução'},
+  {id:'capag', nome:'Avaliador da CAPAG', cor:C.amber, g:'Execução'},
+  {id:'teses', nome:'Banco de teses', cor:C.rose, count:1, g:'Base jurídica'},
+  {id:'leis', nome:'Banco de leis', cor:C.violet, count:1, g:'Base jurídica'},
+  {id:'motor', nome:'Motor de leads', cor:C.teal, g:'Ferramentas'},
+  {id:'ferramentas', nome:'Ferramentas', cor:C.green, g:'Ferramentas'},
+  {id:'decisoes', nome:'Decisões e 90 dias', cor:C.blue, count:9, g:'Plano'},
+];
+
+const POPS = [
+ {id:'pop-com-01', cod:'COM-01', area:'Comercial', cor:C.amber, nome:'Primeiro contato e cadência', executa:'Robô SDR e SDR', termina:'R1 agendada com os 7 campos, ou lead em nutrição no 8º toque', tempo:'até 15 dias',
+  passos:[
+   ['Responder em até 5 minutos', 'O robô faz o primeiro toque e a SDR assume em seguida. A primeira frase diz o nome do escritório.'],
+   ['Seguir a cadência de 8 toques', 'Formatos alternados:', ['D0 texto','D1 áudio','D2 ligação e aviso escrito','D4 áudio com mini-diagnóstico público','D6 prova social e convite','D8 ligação','D11 áudio de honestidade ("faz sentido continuar?")','D15 despedida e nutrição']],
+   ['Escrever cada mensagem em 4 partes', 'Nome, a dor do lead, o valor do diagnóstico e o próximo passo com dia e hora. O convite oferece duas opções: "hoje à tarde ou amanhã de manhã?".'],
+   ['Preencher os 7 campos no card', 'CNPJ, valor da dívida, regime, situação, gatilho, quem decide e reunião confirmada.'],
+   ['Deixar o gov.br pronto', 'Se faltar acesso, pedir que o lead deixe pronto antes da reunião ("leva 2 minutos").'],
+   ['Registrar tudo no CRM', 'Inclusive as ligações.']
+  ]},
+ {id:'pop-com-02', cod:'COM-02', area:'Comercial', cor:C.amber, nome:'Agendamento e confirmação da R1', executa:'SDR', termina:'Lead na reunião ou reagendado', tempo:'D-1 a 2h antes',
+  passos:[
+   ['Marcar no Google Meet', 'Pela agenda do escritório, com convite automático para o lead e para o closer.'],
+   ['Confirmar três vezes', 'Ao agendar, na véspera e de 1 a 2 horas antes.'],
+   ['Recuperar o no-show no mesmo dia', 'No segundo contato, perguntar "qual o melhor dia e período?".'],
+   ['Deixar a consulta pública no card', 'Dívida ativa, execuções e situação no Simples, para o closer abrir na R1.']
+  ]},
+ {id:'pop-com-03', cod:'COM-03', area:'Comercial', cor:C.amber, nome:'R1: diagnóstico e venda do parecer', executa:'Closer (Dr. Alex)', termina:'Parecer pago, ou retorno marcado em 24h', tempo:'20 minutos',
+  passos:[
+   ['Rapport', 'No máximo 5 minutos.'],
+   ['Situação e problema', 'Mostrar na tela a consulta pública: inscrições, execução e CAPAG presumida.'],
+   ['Implicação', 'Deixar o cliente dizer o que acontece se nada mudar (bloqueio, penhora, contrato perdido). Nesta etapa não se apresenta solução.'],
+   ['Necessidade', 'Explicar que existe negociação oficial com a PGFN, sem citar porcentagem.'],
+   ['Vender o parecer', 'Analogia do médico: sem exame não há receita. Prazo de 24 a 48 horas. O valor é abatido da 1ª parcela se fechar.'],
+   ['Fechar o dia', 'Mover o card, registrar dores e desejos, pedir a procuração no e-CAC e acionar o OP-01.']
+  ]},
+ {id:'pop-com-04', cod:'COM-04', area:'Comercial', cor:C.amber, nome:'R2: proposta e fechamento', executa:'Closer (Dr. Alex)', termina:'Contrato assinado na assinatura digital, ou retorno em 48h', tempo:'só com parecer aprovado',
+  passos:[
+   ['Apresentar os três pontos', 'O passivo real (PGFN e Receita), a CAPAG com o desconto possível, e a economia em reais.'],
+   ['Apresentar a proposta', 'Valor fixo parcelado mais êxito sobre o desconto real. Mostrar o retorno: economia dividida pelo honorário.'],
+   ['Responder às objeções', '', ['"É caro": o retorno com os números do parecer','"Não tenho para o honorário": o fixo é parcelado e o êxito vem depois do desconto confirmado','"Meu contador cuida": reunião a três','"Isso é golpe?": canais oficiais, nada é pago a intermediário']],
+   ['Fechar ou descobrir a objeção', 'Se aceitar, o contrato vai para assinatura digital na hora. Se disser "vou pensar", achar a objeção real antes de encerrar.'],
+   ['Passar ao operacional', 'Lançar os honorários no financeiro, criar a pasta no Drive e acionar o OP-02.']
+  ], nota:'Desconto e condições fora da tabela são decisão do Dr. Alex. Nenhum robô ou SDR negocia preço.'},
+ {id:'pop-op-01', cod:'OP-01', area:'Operacional', cor:C.teal, nome:'Procuração e levantamento do passivo', executa:'Analista fiscal', termina:'Relatório do agente de passivo fiscal na pasta do cliente', tempo:'cerca de 1h20',
+  passos:[
+   ['Criar a pasta no Drive', 'Com as subpastas 01 - Documentos Fiscais, 02 - Relatórios e 03 - Petições.'],
+   ['Obter a procuração no e-CAC', 'Com o gov.br prata ou ouro do sócio. Validade padrão a definir (1 ou 5 anos).'],
+   ['Coletar no e-CAC', 'Cerca de 30 min, depois de "Alterar perfil de acesso" para o CNPJ:', ['Situação Fiscal: AAAA-MM-DD_CLIENTE_eCAC-SituacaoFiscal.pdf','Caixa Postal: exclusão do Simples tem 30 dias para impugnar','Parcelamentos e parcelas em atraso','Débitos vencidos há mais de 90 dias fora da dívida ativa','Processos administrativos e certidão']],
+   ['Coletar no Regularize', 'Cerca de 40 min:', ['Notificações','Relatório Consolidado da dívida ativa','Negociações no SISPAR','Simulação de adesão em PDF com data e hora','CAPAG: faixa e vetores']],
+   ['Rodar o agente de passivo fiscal', 'Com os PDFs. O relatório vai para 02 - Relatórios.']
+  ]},
+ {id:'pop-op-02', cod:'OP-02', area:'Operacional', cor:C.teal, nome:'Análise jurídica e parecer', executa:'Advogado(a) tributário(a)', termina:'Parecer aprovado pelo Dr. Alex', tempo:'48h após o pagamento',
+  passos:[
+   ['Analisar nesta ordem', '', ['Prescrição (CTN art. 174; Tema 566 do STJ para a intercorrente)','Decadência','Nulidades da CDA','Impedimento de 2 anos por transação rescindida (art. 18 da Portaria 6.757)','Elegibilidade ao edital vigente','CAPAG presumida contra a efetiva','Execuções fiscais','Riscos penais e de redirecionamento aos sócios']],
+   ['Decidir a estratégia pela árvore', 'A medida decorre do impedimento encontrado (tabela abaixo).'],
+   ['Escrever o parecer no timbrado', 'Passivo, CAPAG, análise, elegibilidade, estratégia com cronograma e três cenários de desconto e parcela.'],
+   ['Revisar e aprovar', 'Um segundo advogado (ou o agente de IA) revisa, o Dr. Alex aprova e marca a R2.']
+  ], arvore:[
+   ['Débito da Receita vencido há mais de 90 dias, sem dívida ativa','OP-03: remessa à PGFN'],
+   ['Impedimento de 2 anos ativo','Transação bloqueada. Avaliar negócio jurídico processual ou parcelamento em 60x'],
+   ['CAPAG A, B ou C, com ganho de faixa confirmado','OP-04: revisão da CAPAG'],
+   ['CDA elegível ao edital vigente','OP-05: simular e aderir'],
+   ['Parcelamento em risco de rescisão','Quitar as parcelas vencidas antes de tudo'],
+   ['Execução sem citação e com tese documental','Exceção de pré-executividade'],
+   ['Entrada de 10% ou 20% cobrada após rescisão','Separar por inscrição ou requerimento do art. 14-A']
+  ]},
+ {id:'pop-op-03', cod:'OP-03', area:'Operacional', cor:C.teal, nome:'Remessa dos débitos da Receita para a PGFN', executa:'Analista fiscal, revisão do advogado', termina:'Débitos inscritos em dívida ativa, ou MS avaliado', tempo:'decisão em 30 dias (Lei 9.784, art. 49)',
+  passos:[
+   ['Emitir o relatório no dia do protocolo', 'Situação fiscal da data do pedido.'],
+   ['Separar os débitos', 'Declarados, vencidos, não pagos, não inscritos, sem parcelamento e sem suspensão. Data de corte = protocolo menos 90 dias. Anotar o que ficou de fora.'],
+   ['Preencher o formulário', '"Relação de Débitos a Consultar para Inscrição em DAU". Simples declarado no PGDAS-D usa o código 6106.'],
+   ['Endereçar certo', 'Ao Delegado da DRF ou DERAT com jurisdição, nunca à ARF.'],
+   ['Conferir os totais', 'Relatório, tabela e formulário batem; data de corte certa.'],
+   ['Protocolar no e-CAC', 'Processos Digitais, serviço "Consultar a possibilidade de inscrição em Dívida Ativa da União". Juntar no mesmo dia e conferir que não ficou rascunho.'],
+   ['Acompanhar', 'Tarefa em 3 dias, depois semanal. Negado ou fora do prazo: o advogado avalia o mandado de segurança.']
+  ]},
+ {id:'pop-op-04', cod:'OP-04', area:'Operacional', cor:C.teal, nome:'Revisão da CAPAG', executa:'Advogado(a) e contador do cliente', termina:'Pedido protocolado, prazo de 30 dias correndo', tempo:'via 2: 60 a 90 dias de preparo',
+  passos:[
+   ['Escolher uma via, sem misturar', '', ['Atacar um vetor: dado desatualizado na base da PGFN (faturamento, veículo, imóvel). Mais rápida.','CAPAG efetiva: balanço, DRE e DFC pelo método direto de 2 exercícios mais o corrente, e o laudo. O método indireto gera exigência.']],
+   ['Montar laudo e pedido', 'Modelo no timbrado, salvo em CLIENTES/NOME DO CLIENTE/05_TRIBUTARIO/03_PETICOES.'],
+   ['Protocolar no Regularize', 'Negociar Dívida, Outros Serviços, Revisão de Capacidade de Pagamento.'],
+   ['Antecipar as exigências', 'Fluxo de caixa detalhado, distribuição de lucros de 2 anos, mútuos e grupo econômico.']
+  ], nota:'Só protocolar com o ganho de faixa confirmado e a aprovação do responsável técnico. Julgado o pedido, um novo só cabe com fato superveniente ou mudança substancial da CAPAG presumida (art. 34-B, Portaria PGFN 6.757/2022).'},
+ {id:'pop-op-05', cod:'OP-05', area:'Operacional', cor:C.teal, nome:'Adesão à transação', executa:'Advogado(a)', termina:'Adesão feita e 1ª parcela no controle', tempo:'no dia da simulação aprovada',
+  passos:[
+   ['Conferir o edital no dia', 'Edital vigente, data de corte, teto e entrada, no Regularize.'],
+   ['Simular por inscrição', 'Se cobrar entrada de 10% ou 20% por parcelamento anterior, separar as inscrições antes de aderir.'],
+   ['Obter o "de acordo" escrito', 'Simulação com entrada, parcela e prazo enviada ao cliente.'],
+   ['Aderir e registrar', 'Recibo na pasta e 1ª parcela no controle. Se a 1ª parcela atrasar, a adesão cai.'],
+   ['Calcular o êxito', 'Sobre o desconto efetivo, e avisar o financeiro.']
+  ]},
+ {id:'pop-op-06', cod:'OP-06', area:'Operacional', cor:C.teal, nome:'Acompanhamento mensal das parcelas', executa:'Controle de negociações (a confirmar)', termina:'Todas as guias pagas no mês', tempo:'ciclo mensal',
+  passos:[
+   ['Dia 1: listar as negociações ativas', ''],
+   ['Dias 1 a 19: marcar o farol', 'Conferir cada uma no e-CAC e no Regularize:', ['Verde: tudo em dia','Amarelo: 1 parcela atrasada','Vermelho: 2 ou mais, entrada ou última parcela, ou débito novo inscrito','Preto: notificação de rescisão','Na dúvida, vale a cor mais grave']],
+   ['Dia 20 em diante: mandar as guias', 'Com a mensagem padrão.'],
+   ['Conferir o pagamento', '5 dias úteis depois. Casos em preto: ligar 10 dias antes do fim do prazo (impugnação 30 dias, recurso 10).'],
+   ['Avisar rescisão no mesmo dia', 'Rescisão de transação na PGFN gera 2 anos de impedimento.']
+  ]}
+];
+
+const FLUXO = [
+ {fase:'1. Vender o parecer', cor:C.amber, passos:[
+   {n:'Lead e robô SDR', d:'resposta em até 5 min', pop:'pop-com-01'},
+   {n:'Qualificado?', d:'não: nutrição', dec:1, pop:'pop-com-01'},
+   {n:'R1 diagnóstico', d:'closer, 20 minutos', pop:'pop-com-03'},
+   {n:'Comprou o parecer?', d:'não: retorno em 24h', dec:1, pop:'pop-com-03'}]},
+ {fase:'2. Parecer e contrato', cor:C.teal, passos:[
+   {n:'Levantamento', d:'e-CAC e Regularize', pop:'pop-op-01'},
+   {n:'Parecer jurídico', d:'em até 48h', pop:'pop-op-02'},
+   {n:'Aprovação', d:'responsável técnico', pop:'pop-op-02'},
+   {n:'R2 e proposta', d:'closer', pop:'pop-com-04'}]},
+ {fase:'3. Executar', cor:C.violet, passos:[
+   {n:'Assinou?', d:'não: retorno em 48h', dec:1, pop:'pop-com-04'},
+   {n:'Remessa à PGFN', d:'quando houver', pop:'pop-op-03'},
+   {n:'Revisão da CAPAG', d:'só com ganho de faixa', pop:'pop-op-04'},
+   {n:'Adesão à transação', d:'edital do dia', main:1, pop:'pop-op-05'}]},
+ {fase:'4. Acompanhar', cor:C.green, passos:[
+   {n:'Acompanhamento', d:'farol mensal', pop:'pop-op-06'},
+   {n:'Êxito cobrado', d:'sobre o desconto real', pop:'pop-op-05'}]}
+];
+
+const DECISOES = [
+ 
+ 'Êxito já definido: 25% para clientes novos e 10% para os antigos. Falta o valor do parecer, do fixo e do acompanhamento',
+ 'Quem é a SDR do tributário, e quantos leads ela consegue atender por dia',
+ 'Quem faz a coleta no e-CAC e o controle mensal: alguém da equipe ou contratação',
+ 'Texto único sobre desconto para o marketing ("até 70%" só como teto legal)',
+ 'Validade da procuração no e-CAC: 1 ano ou 5 anos',
+ 'Competência do mandado de segurança de remessa: Brasília ou a sede do cliente',
+ 'Contrato: cláusulas de êxito, rescisão e uso do nome do cliente revisadas',
+ 'Se a regra "pedir sempre CAPAG D" vale aqui, ou se cada caso é avaliado'
+];
+
+const KIT = [
+ {pasta:'motor/', nome:'Achar a empresa devedora', cor:C.teal, tela:'motor', d:'Lê os dados abertos da PGFN, soma a dívida por CNPJ, dá uma nota de 0 a 100 e busca o telefone na BrasilAPI. Não manda mensagem e não mexe em CRM.', cmd:['python motor/motor_autonomo.py']},
+ {pasta:'consulta/', nome:'Raio-x da empresa para a R1', cor:C.blue, tela:'pop-com-03', d:'Cadastro, sócios e todas as inscrições num HTML para abrir na tela da reunião. Sai em consulta/saida/.', cmd:['python consulta/consultar_cnpj.py <cnpj>']},
+ {pasta:'.claude/skills/triagem-tributaria', nome:'Triagem da conversa', cor:C.amber, tela:'comercial', d:'Transforma a reunião em triagem: débitos e origem, fase, execução, parcelamentos, CAPAG, teses candidatas com a prova de cada uma, gatilhos de prazo e o que falta perguntar.', cmd:['/triagem-tributaria']},
+ {pasta:'ia/', nome:'Relatório de passivo fiscal', cor:C.violet, tela:'pop-op-01', d:'Prompt do relatório: cole como instrução no Claude e anexe os PDFs do e-CAC, do Regularize, das CDAs e da execução.', cmd:['ia/system_prompt_tributarista.md']},
+ {pasta:'capag/ e agente avaliador-capag', nome:'Decidir se pede a revisão da CAPAG', cor:C.coral, tela:'capag', d:'O agente lê os prints do Regularize e os demonstrativos, monta o caso.json e roda o script. A mesma conta está aberta aqui no painel.', cmd:['python capag/avaliar_capag.py capag/exemplo_caso.json','python capag/avaliar_capag.py caso.json --saida parecer_capag.md']},
+ {pasta:'agente peca-tributaria + teses/ + leis/', nome:'Redigir a peça', cor:C.rose, tela:'teses', d:'Relatório, parecer, pedido de remessa, recurso administrativo, embargos ou exceção de pré-executividade. Sempre minuta para o advogado revisar.', cmd:['python leis/buscar_lei.py PORT6757 34-B']},
+ {pasta:'pops/', nome:'Quem faz o quê até o acompanhamento', cor:C.green, tela:'pops', d:'Dez POPs, um arquivo cada: 4 comerciais e 6 operacionais. Troque os nomes e cargos pelos da sua equipe.', cmd:[]}
+];
+const METODO = [
+ ['Monitorar os editais','Qual edital está aberto e até quando? O prazo de adesão comanda a urgência do caso.','Regularize · editais da PGFN',''],
+ ['Consulta pública','Situação cadastral, porte, Simples, dívida ativa e execução fiscal.','consulta/consultar_cnpj.py','kit'],
+ ['Simular no Regularize','O que a PGFN oferece de fato, e em qual faixa de CAPAG classificou a empresa.','Regularize, com procuração','pop-op-05'],
+ ['Analisar a viabilidade','Por que a transação é possível ou não. É aqui que o escritório agrega valor.','Parecer · POP-OP-02','pop-op-02'],
+ ['Verificar o SPAR','Se a etapa 4 não explica o impedimento, qual é a causa real.','e-CAC · SISPAR',''],
+ ['Definir a tese ou a medida','A medida decorre do impedimento encontrado. Não é escolha livre.','teses/ · agente peca-tributaria','teses']
+];
+const VETORES = [
+ ['Receita bruta','Não é capacidade de pagamento: ignora a margem.'],
+ ['DARF pago','Efeito perverso: pune quem paga em dia.'],
+ ['Notas fiscais de saída','São custo e duplicam o dado contábil.'],
+ ['Endividamento bancário e despesas','A PGFN não enxerga. Entram pelo art. 30, III e V.'],
+ ['Patrimônio','É da PJ ou do sócio? É bem usado na operação (art. 30, parágrafo único)?']
+];
+const PRAZOS = [
+ ['Pedir a revisão','30 dias da ciência','art. 29'],
+ ['Sanar documento faltante','10 dias','art. 31, § 1º'],
+ ['Informação adicional','15 dias, prorrogáveis','art. 31, § 2º'],
+ ['Recorrer da decisão','10 dias, no Regularize','art. 34-A']
+];
+const DOCS = [
+ ['laudo','Laudo técnico com metodologia, firmado por profissional habilitado','art. 30, I'],
+ ['balanco','Balanço Patrimonial dos 2 últimos exercícios e do corrente','art. 30, I'],
+ ['dre','DRE dos 2 últimos exercícios e do corrente','art. 30, I'],
+ ['dfc','DFC pelo método direto, 2 exercícios e o corrente','art. 30, I'],
+ ['bens','Bens e direitos: matrícula, IPTU/ITR, CRLV/IPVA e uso na operação','art. 30, II'],
+ ['credores','Relação nominal dos credores, com natureza, valor e vencimentos','art. 30, III'],
+ ['extratos','Extratos bancários e de aplicações atualizados','art. 30, IV'],
+ ['operacoes_credito','Operações de crédito e garantias','art. 30, V']
+];
+const EXEMPLO_CAPAG = {empresa:'Transportes Exemplo Ltda', cnpj:'00.000.000/0001-00', faixa_atual:'B', capag_presumida_valor:1800000, data_ciencia_capag:'2026-11-01', passivo_total:2400000, fluxo_caixa_livre_anual:[140000,95000,120000], capacidade_estimada_5anos:null, pedido_anterior_julgado:false, fato_superveniente:'', mudanca_substancial_presumida:false, dfc_metodo:'indireto', situacao_cadastral:'ATIVA', recuperacao_judicial:false, falencia:false,
+  documentos:{laudo:false,balanco:true,dre:true,dfc:true,bens:false,credores:false,extratos:false,operacoes_credito:false},
+  creditos:[{inscricao:'80 6 09 000001-01',data_inscricao:'2009-03-10',garantia_ou_suspensao:false},{inscricao:'80 2 21 000002-02',data_inscricao:'2021-08-02',garantia_ou_suspensao:false},{inscricao:'80 7 15 000003-03',data_inscricao:'2015-05-20',execucao_arquivada_art40_desde:'2021-02-01'}]};
+
+const $ = s => document.querySelector(s);
+const cmd = c => `<div class="cmd"><code>${esc(c)}</code><button class="copiar" type="button" data-copiar="${esc(c)}">copiar</button></div>`;
+let filtroLei = '';
+function toast(m){ const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('on'), 1800); }
+async function copiar(txt){
+  try{ await navigator.clipboard.writeText(txt); }
+  catch(e){ const a = document.createElement('textarea'); a.value = txt; a.style.position='fixed'; a.style.opacity='0'; document.body.appendChild(a); a.select(); try{ document.execCommand('copy'); }catch(_){} a.remove(); }
+  toast('Copiado');
+}
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ico = {
+  seta:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  volta:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>'
+};
+function guarda(k, v){ try{ if(v===undefined) return JSON.parse(localStorage.getItem(k)||'null'); localStorage.setItem(k, JSON.stringify(v)); }catch(e){ return null; } }
+
+function navegar(){
+  const n = t => ({teses:TESES.length, leis:LEIS.length}[t.id] ?? t.count);
+  const bt = t => `<button type="button" data-ir="${t.id}" style="--c:${t.cor}"><span class="dot"></span>${t.nome}${t.count?`<span class="count">${n(t)}</span>`:''}</button>`;
+  let g = '';
+  $('#nav').innerHTML = TELAS.map(t => { const cab = t.g !== g ? `<div class="nav-g">${t.g}</div>` : ''; g = t.g; return cab + bt(t); }).join('');
+  $('#topbar').innerHTML = `<button type="button" data-busca aria-label="Buscar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>` + TELAS.map(bt).join('');
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-ir]'); if(!b) return;
+  e.preventDefault(); ir(b.dataset.ir);
+});
+function ordem(id){ const i = TELAS.findIndex(t => t.id === id); if(i>=0) return i*20; const p = POPS.findIndex(p => p.id === id); return p>=0 ? TELAS.findIndex(t => t.id === 'pops')*20 + 1 + p : 0; }
+let atual = null;
+function ir(id){ if(location.hash.slice(1) !== id) location.hash = id; else render(); }
+window.addEventListener('hashchange', render);
+
+function render(){
+  let id = location.hash.slice(1) || 'inicio';
+  const valido = TELAS.some(t => t.id === id) || POPS.some(p => p.id === id);
+  if(!valido) id = 'inicio';
+  const volta = atual !== null && ordem(id) < ordem(atual);
+  atual = id;
+  const tela = id.startsWith('pop-') ? 'pops' : id;
+  document.querySelectorAll('[data-ir]').forEach(b => b.dataset.ir === tela ? b.setAttribute('aria-current','page') : b.removeAttribute('aria-current'));
+  const cor = (TELAS.find(t => t.id === tela) || TELAS[0]).cor;
+  const fn = id.startsWith('pop-') ? () => telaPop(POPS.find(p => p.id === id)) : VIEWS[id];
+  const stage = $('#stage');
+  const pinta = () => {
+    stage.innerHTML = `<section class="screen${volta?' volta':''}" style="--c:${cor}">${fn()}</section>`;
+    window.scrollTo({top:0});
+    depois(id);
+  };
+  if(document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(pinta); else pinta();
+}
+
+const VIEWS = {
+ inicio(){ return `
+  <div class="hero" style="--c:var(--blue)"><canvas id="ondas" aria-hidden="true"></canvas>
+    <div class="eyebrow"><span class="dot" style="--c:var(--blue)"></span>Laís Torres &amp; Alex Brunno Advogados · Tributário</div>
+    <h1>Negociar a dívida federal da empresa <span class="ouro">com a PGFN</span></h1>
+    <p class="lead">A entrada é um parecer pago. O contrato junta um valor fixo parcelado com êxito sobre a economia real. Tudo roda com o kit deste repositório e ferramentas comuns de escritório.</p>
+    <div class="filters"><button class="btn" type="button" data-ir="kit" style="--c:var(--green)">Ver o kit ${ico.seta}</button><button class="btn" type="button" data-ir="fluxo" style="--c:var(--teal)">Ver o fluxo ${ico.seta}</button><button class="btn" type="button" data-ir="capag" style="--c:var(--amber)">Avaliar uma CAPAG ${ico.seta}</button></div>
+  </div>
+  <div class="grid g4 section">
+    ${[['10','POPs separados','pops',C.coral],[String(TESES.length||'—'),'teses no banco','teses',C.rose],[String(LEIS.length),'normas com busca','leis',C.violet],[String(KIT.length),'peças no kit','kit',C.green]].map(([n,t,l,c])=>`<button type="button" class="card click" data-ir="${l}" style="--c:${c}"><div class="big">${n}</div><div class="muted">${t}</div></button>`).join('')}
+  </div>
+  <div class="section"><h2>As quatro fases</h2>
+    <div class="grid g4">${FLUXO.map((f,i)=>`<button type="button" class="card click fase" data-ir="fluxo" style="--c:${f.cor}"><span class="n">FASE ${i+1}</span><h3>${esc(f.fase.slice(3))}</h3><span class="muted" style="font-size:13.5px">${f.passos.map(p=>esc(p.n)).join(' · ')}</span></button>`).join('')}</div>
+  </div>
+  <div class="section grid g2">
+    <div class="card"><h2>Para quem</h2><p class="muted" style="margin:0">Empresas com dívida ativa na PGFN ou débito vencido na Receita, de preferência acima de R$ 100 mil. Sinais de urgência: execução fiscal, CND travada, risco de exclusão do Simples, parcelamento prestes a cair. A dívida ainda não ajuizada é o melhor lead.</p></div>
+    <div class="card tinted" style="--c:var(--crit)"><h2>Regras que não se quebram</h2><ul style="margin:0;padding-left:18px">
+      <li>Edital, data de corte e teto conferidos no Regularize no dia de cada caso.</li>
+      <li>Revisão da CAPAG só com ganho de faixa confirmado: julgado o pedido, um novo só cabe com fato superveniente (art. 34-B, Portaria PGFN 6.757/2022).</li>
+      <li>Faixas A e B não têm desconto, só entrada facilitada.</li>
+      <li>Nunca prometer porcentagem de desconto ao lead.</li></ul></div>
+  </div>
+  <div class="section"><h2>Estrutura de preço</h2>
+   <div class="tbl"><table><thead><tr><th>Item</th><th>Como funciona</th><th>Valor</th></tr></thead><tbody>
+    <tr><td>Diagnóstico R1</td><td>gratuito, 20 min</td><td><span class="pill warn">cada escritório define</span></td></tr>
+    <tr><td>Parecer jurídico</td><td>pago, abatido da 1ª parcela se fechar</td><td><span class="pill warn">cada escritório define</span></td></tr>
+    <tr><td>Honorário fixo</td><td>parcelado em 12x</td><td><span class="pill warn">cada escritório define</span></td></tr>
+    <tr><td>Êxito</td><td>porcentagem sobre o desconto efetivo</td><td><span class="pill warn">cada escritório define</span></td></tr>
+    <tr><td>Acompanhamento</td><td>plano anual das parcelas</td><td><span class="pill warn">cada escritório define</span></td></tr>
+   </tbody></table></div></div>`; },
+
+ fluxo(){ return `
+  <div class="eyebrow">Do lead ao acompanhamento</div>
+  <h1>O parecer pago é a ponte entre vender e executar</h1>
+  <p class="lead">Clique numa etapa para abrir o POP dela. Nenhum lead some: quem não avança volta com data marcada ou vai para nutrição.</p>
+  <div class="flow">${FLUXO.map(f=>`<div class="lane-title" style="--c:${f.cor}"><span class="dot"></span><h3>${esc(f.fase)}</h3></div>${f.passos.map(p=>`<button type="button" class="step${p.dec?' dec':''}${p.main?' main':''}" data-ir="${p.pop}" style="--c:${f.cor}"><span class="tag">${p.dec?'DECISÃO':POPS.find(x=>x.id===p.pop).cod}</span><h3>${esc(p.n)}</h3><small>${esc(p.d)}</small></button>`).join('')}`).join('')}</div>
+  <p class="flow-note section">A remessa à PGFN e a revisão da CAPAG só acontecem quando o parecer indica. O êxito é cobrado depois da adesão, sobre o desconto efetivo.</p>`; },
+
+ organograma(){
+  const papeis = [
+   ['Comercial', C.amber, [['Robô SDR tributário','primeiro toque em 5 min'],['SDR','a definir',1],['Marketing','listas do motor e anúncios']]],
+   ['Operacional tributário', C.teal, [['Advogado tributário','Dr. Alex'],['Analista fiscal','e-CAC e Regularize',1],['Controle de parcelas','farol mensal (OP-06)',1],['Agente peca-tributaria','minuta de parecer e peças']]],
+   ['Apoio e sistemas', C.green, [['Financeiro','honorários e êxito'],['Relatório de passivo (ia/)','lê os PDFs e gera o relatório'],['Agente avaliador-capag','decide se pede a revisão']]]];
+  return `
+  <div class="eyebrow">Quem faz o quê</div>
+  <h1>Três frentes sob a direção, quatro cargos sem dono</h1>
+  <p class="lead">Contorno laranja tracejado = cargo a definir ou a contratar. Até lá, o Dr. Alex acumula a parte técnica.</p>
+  <div class="org-top">
+    <div class="card tinted" style="--c:var(--blue)"><h3>Dr. Alex Brunno</h3><span class="muted">dono do produto, closer e responsável técnico</span></div>
+    <div class="card tinted" style="--c:var(--violet)"><h3>Dra. Laís Torres</h3><span class="muted">leva o produto aos clientes de assessoria (oficinas e autopeças)</span></div>
+  </div>
+  <div class="org-link" aria-hidden="true"></div>
+  <div class="grid g3">${papeis.map(([n,c,rs])=>`<div class="card tinted" style="--c:${c}"><div class="eyebrow" style="margin-bottom:12px"><span class="dot"></span>${n}</div><div class="grid" style="gap:8px">${rs.map(r=>`<div class="role${r[2]?' open':''}"><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join('')}</div></div>`).join('')}</div>`; },
+
+ comercial(){ const etapas=['Novo lead','Em cadência','R1 agendada','R1 realizada','Parecer vendido','Parecer em elaboração','R2 agendada','Proposta enviada','Contrato assinado','Perdido / nutrição'];
+  const cad=[['D0','texto'],['D1','áudio'],['D2','ligação'],['D4','mini-diagnóstico'],['D6','prova social'],['D8','ligação'],['D11','honestidade'],['D15','despedida']];
+  return `
+  <div class="eyebrow">Departamento comercial</div>
+  <h1>Duas reuniões: a R1 vende o parecer, a R2 vende o contrato</h1>
+  <p class="lead">Aqui há proposta e duas reuniões porque quem decide é o sócio da empresa, muitas vezes junto com o contador.</p>
+  <h2>Quadro "Tributário" no CRM</h2>
+  <div class="funil">${etapas.map((e,i)=>`<span><b>${String(i+1).padStart(2,'0')}</b>${e}</span>`).join('')}</div>
+  <p class="muted" style="font-size:13px">Cada card tem um dono: quem atende o lead. Card perdido nunca é apagado.</p>
+  <div class="section"><h2>Cadência de 8 toques</h2><div class="cad">${cad.map(([d,t])=>`<div class="t"><b>${d}</b>${t}</div>`).join('')}</div></div>
+  <div class="section grid g2">
+    <div class="card"><h2>Papéis</h2><div class="tbl" style="border:0"><table><tbody>
+      <tr><td><b>Robô SDR</b></td><td>primeiro toque, triagem, move o card. Não fala de valor.</td></tr>
+      <tr><td><b>SDR</b></td><td>cadência, qualificação, agenda e confirma a R1. Não fecha.</td></tr>
+      <tr><td><b>Closer</b></td><td>R1 e R2, vende o parecer, negocia e fecha.</td></tr>
+      <tr><td><b>Responsável técnico</b></td><td>aprova parecer e estratégia antes da R2.</td></tr>
+      <tr><td><b>Marketing</b></td><td>listas do Motor PGFN, criativos, campanhas.</td></tr></tbody></table></div></div>
+    <div class="card"><h2>Os 7 campos antes da R1</h2><ul class="check">${['CNPJ','Valor aproximado da dívida','Regime: Simples, Presumido ou Real','Situação: CDA, execução, parcelamento, citação','Gatilho: CND, licitação, crédito, penhora','Quem decide: sócio, cônjuge ou contador','Reunião com data e hora confirmadas'].map(x=>`<li><span class="dot" style="--c:var(--amber);margin-top:6px"></span>${x}</li>`).join('')}</ul></div>
+  </div>
+  <div class="section grid g2">
+    <div class="card"><h2>Metas iniciais</h2><div class="tbl" style="border:0"><table><tbody>
+      <tr><td>Primeiro contato</td><td class="mono">até 5 min</td></tr><tr><td>Toques em 7 dias</td><td class="mono">≥ 3</td></tr>
+      <tr><td>Comparecimento à R1</td><td class="mono">≥ 70%</td></tr><tr><td>Registro no CRM</td><td class="mono">100%</td></tr>
+      <tr><td>Parecer / R1 e contrato / R2</td><td class="mono">medir no mês 1</td></tr></tbody></table></div></div>
+    <div class="card tinted" style="--c:var(--crit)"><h2>O comercial não diz</h2><div class="funil">${['"Regularize"','"transação por adesão"','"vou te dar 70%"','honorário antes da R2','prazo garantido','"tudo bem?" sozinho'].map(x=>`<span>${x}</span>`).join('')}</div>
+      <h3 style="margin-top:18px">Canais</h3><p class="muted" style="margin:6px 0 0;font-size:14px">Lista do Motor PGFN (dívida não ajuizada), campanha paga levando ao robô, e parceria com contadores.</p></div>
+  </div>`; },
+
+ pops(){ const grupo=(a,c)=>`<div class="section"><div class="eyebrow" style="--c:${c}"><span class="dot" style="--c:${c}"></span>${a}</div><div class="grid g2" style="margin-top:12px">${POPS.filter(p=>p.area===a).map(p=>{const f=(guarda('pop:'+p.id)||[]).filter(Boolean).length;return `<button type="button" class="card click" data-ir="${p.id}" style="--c:${p.cor}"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span class="pill">POP-${p.cod}</span><span class="muted mono" style="font-size:12px">${f}/${p.passos.length} passos</span></div><h3 style="margin-top:12px;font-size:17px">${esc(p.nome)}</h3><p class="muted" style="margin:6px 0 0;font-size:13.5px">${esc(p.executa)} · ${esc(p.tempo)}</p></button>`}).join('')}</div></div>`;
+  return `<div class="eyebrow">Procedimentos operacionais padrão</div><h1>Dez POPs, cada um na sua tela</h1><p class="lead">Abra um POP para ver os passos. Marque o que já fez: a marcação fica só no seu navegador.</p>${grupo('Comercial',C.amber)}${grupo('Operacional',C.teal)}`; },
+
+ teses(){ return `
+  <div class="eyebrow">Banco de teses tributário</div>
+  <h1>Teses para remessa, CAPAG, parcelamento e execução</h1>
+  <p class="lead">Base: modelos de peça de prática tributária. "Verificado" = a citação está no modelo. "Conferir" = puxar o inteiro teor antes de usar em peça.</p>
+  <div class="filters" id="filtros"></div>
+  <div class="grid g2" id="lista-teses"></div>`; },
+
+ leis(){ return `
+  <div class="eyebrow">Banco de leis tributário</div>
+  <h1>${LEIS.length} normas, ${LEIS.reduce((s,l)=>s+l.artigos,0).toLocaleString('pt-BR')} artigos, texto vigente</h1>
+  <p class="lead">As normas que sustentam as teses do escritório, baixadas do Planalto e dos espelhos das portarias, cortadas por artigo e com busca. O texto revogado fica de fora. Editais da PGFN não entram: são conferidos no Regularize no dia.</p>
+  <div class="filters"><input class="search" id="busca-lei" type="search" placeholder="Filtrar: prescrição, CAPAG, mandado de segurança…" value="${esc(filtroLei)}" aria-label="Filtrar normas"></div>
+  <div class="tbl"><table><thead><tr><th>Sigla</th><th>Norma</th><th>Uso nas teses</th><th>Artigos</th></tr></thead><tbody id="lista-leis"></tbody></table></div>
+  <div class="card tinted section" style="--c:var(--violet)"><h3>Como buscar o artigo</h3><p class="muted" style="margin:6px 0 12px;font-size:14px">O texto fica em <span class="mono">leis/banco_leis.db</span>. Rode dentro da pasta <span class="mono">tributario/</span>:</p><div class="grid" style="gap:8px">${['python leis/buscar_lei.py CTN 174','python leis/buscar_lei.py PORT6757 34-B','python leis/buscar_lei.py revisao capacidade pagamento'].map(cmd).join('')}</div></div>`; },
+
+ kit(){ return `
+  <div class="eyebrow">O ecossistema do repositório</div>
+  <h1>Sete peças, uma passando para a outra</h1>
+  <p class="lead">Do devedor achado nos dados da PGFN até o acompanhamento das parcelas. Cada peça tem uma pasta no repositório e um comando para rodar. Basta Python 3.10, sem instalar biblioteca.</p>
+  <div class="chain">${KIT.map(k=>`<div class="elo" style="--c:${k.cor}"><div class="card"><div class="row"><div><div class="eyebrow" style="--c:${k.cor}">${esc(k.pasta)}</div><h3 style="margin-top:6px;font-size:17px">${esc(k.nome)}</h3></div>${k.tela?`<button class="btn" type="button" data-ir="${k.tela}" style="--c:${k.cor}">Abrir no painel ${ico.seta}</button>`:''}</div><p class="muted" style="margin:0;font-size:14px">${esc(k.d)}</p>${k.cmd.map(cmd).join('')}</div></div>`).join('')}</div>
+  <div class="section grid g2">
+    <div class="card"><h2>Como o kit se liga ao escritório</h2><ul style="margin:0;padding-left:18px;font-size:14px">
+      <li>Os POPs oficiais são os <span class="mono">pops/POP-TRIB-01</span> a <span class="mono">06</span> do repositório. As telas COM e OP deste painel são o roteiro de referência.</li>
+      <li>O motor favorece empresas do MA, PA, TO e GO.</li>
+      <li>Os comandos rodam dentro da pasta <span class="mono">tributario/</span>. Os agentes ficam em <span class="mono">.claude/</span>, na raiz.</li></ul></div>
+    <div class="card tinted" style="--c:var(--crit)"><h2>O que não vem no kit</h2><ul style="margin:0;padding-left:18px;font-size:14px">
+      <li>Modelos de peça prontos: serão montados com as peças reais do escritório (Módulo 6).</li>
+      <li>Listas de leads e relatórios de empresas reais: o motor gera a sua na sua máquina.</li>
+      <li>Preço do parecer, do fixo e do acompanhamento: decisão do Dr. Alex.</li></ul></div>
+  </div>`; },
+
+ metodo(){ return `
+  <div class="eyebrow">Método da transação</div>
+  <h1>Seis etapas, sempre nesta ordem</h1>
+  <p class="lead">Cada etapa responde a uma pergunta e alimenta a seguinte. A medida jurídica sai do impedimento encontrado, não de escolha livre.</p>
+  <div class="grid g3">${METODO.map(([t,p,o,tela],i)=>`<${tela?`button type="button" data-ir="${tela}"`:'div'} class="card fase${tela?' click':''}" style="--c:${[C.blue,C.teal,C.violet,C.coral,C.amber,C.rose][i]}"><span class="n">ETAPA ${i+1}</span><h3>${esc(t)}</h3><span style="font-size:14px">${esc(p)}</span><span class="muted mono" style="font-size:12px">${esc(o)}</span></${tela?'button':'div'}>`).join('')}</div>
+  <div class="card tinted section" style="--c:var(--crit)"><h2>Regras que não se quebram</h2><ul style="margin:0;padding-left:18px">
+    <li>Os editais mudam os percentuais. Entrada, prazo, desconto, teto e data de adesão são conferidos no Regularize no dia de cada caso.</li>
+    <li>Faixas A e B não têm desconto, só entrada facilitada. Por isso a revisão da CAPAG é o que destrava o desconto.</li>
+    <li>A faixa não se calcula: a fórmula da PGFN não é pública e considera o passivo total (PGFN, Receita e FGTS).</li>
+    <li>Revisão só com ganho de faixa confirmado. Julgado o pedido, um novo só cabe com fato superveniente ou mudança substancial da presumida (art. 34-B).</li>
+    <li>Transação rescindida gera 2 anos de impedimento (art. 18 da Portaria 6.757).</li></ul></div>
+  <div class="section grid g2">
+    <div><h2>Vetores contestáveis da CAPAG presumida</h2><div class="tbl"><table><thead><tr><th>Vetor</th><th>Por que contestar</th></tr></thead><tbody>${VETORES.map(([a,b])=>`<tr><td><b>${esc(a)}</b></td><td class="muted">${esc(b)}</td></tr>`).join('')}</tbody></table></div></div>
+    <div><h2>Prazos da CAPAG</h2><div class="tbl"><table><thead><tr><th>Ato</th><th>Prazo</th><th>Base</th></tr></thead><tbody>${PRAZOS.map(([a,b,c])=>`<tr><td>${esc(a)}</td><td class="mono">${esc(b)}</td><td class="mono muted">${esc(c)}</td></tr>`).join('')}</tbody></table></div></div>
+  </div>
+  <div class="section"><h2>Documentos da revisão (art. 30)</h2>
+    <div class="grid g3">${DOCS.map(([k,t,b],i)=>`<div class="card"><span class="pill" style="--c:var(--amber)">${String(i+1).padStart(2,'0')} · ${esc(b)}</span><p style="margin:10px 0 0;font-size:14px">${esc(t)}</p></div>`).join('')}</div>
+    <p class="note">Sem os documentos, a PGFN dá 10 dias para sanar. Se não vierem, o pedido não é conhecido (art. 31, § 1º). O DFC pelo método indireto costuma gerar exigência: faça pelo direto. Extratos por último, para chegarem atuais.</p>
+  </div>`; },
+
+ capag(){ return `
+  <div class="eyebrow">Agente avaliador da CAPAG</div>
+  <h1>Vale pedir a revisão da CAPAG?</h1>
+  <p class="lead">A mesma conferência do <span class="mono">capag/avaliar_capag.py</span> (Portaria PGFN 6.757/2022, arts. 21 a 34-B), feita aqui no navegador. Ele não calcula a faixa A/B/C/D, porque a fórmula da PGFN não é pública: a faixa vem do Regularize. O juízo final é do advogado.</p>
+  <div class="cap">
+    <form class="card" id="cap-form" autocomplete="off" onsubmit="return false">
+      <fieldset class="fs"><legend>Empresa e classificação</legend><div class="campos">
+        <label class="campo"><span>Empresa</span><input name="empresa" placeholder="Razão social"></label>
+        <label class="campo"><span>CNPJ</span><input name="cnpj" placeholder="00.000.000/0001-00" inputmode="numeric"></label>
+        <label class="campo"><span>Faixa atual no Regularize</span><select name="faixa_atual"><option value="">não sei</option><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
+        <label class="campo"><span>Ciência da CAPAG</span><input name="data_ciencia_capag" type="date"></label>
+        <label class="campo"><span>CAPAG presumida (R$)</span><input name="capag_presumida_valor" inputmode="decimal" placeholder="1.800.000"></label>
+        <label class="campo"><span>Passivo total (R$)</span><input name="passivo_total" inputmode="decimal" placeholder="PGFN + Receita + FGTS"></label>
+      </div></fieldset>
+      <fieldset class="fs"><legend>Capacidade estimada</legend><div class="campos">
+        <label class="campo"><span>Fluxo de caixa livre, exercício 1 (R$)</span><input name="fc0" inputmode="decimal"></label>
+        <label class="campo"><span>Exercício 2 (R$)</span><input name="fc1" inputmode="decimal"></label>
+        <label class="campo"><span>Exercício corrente (R$)</span><input name="fc2" inputmode="decimal"></label>
+        <label class="campo"><span>Ou capacidade em 5 anos, do laudo (R$)</span><input name="capacidade_estimada_5anos" inputmode="decimal" placeholder="se preencher, vale este"></label>
+        <label class="campo"><span>DFC feito pelo método</span><select name="dfc_metodo"><option value="">ainda não feito</option><option value="direto">direto</option><option value="indireto">indireto</option></select></label>
+      </div></fieldset>
+      <fieldset class="fs"><legend>Pedido anterior (art. 34-B)</legend>
+        <label class="marca"><input type="checkbox" name="pedido_anterior_julgado">Já houve pedido de revisão julgado</label>
+        <div class="campos" id="cap-34b">
+          <label class="campo full"><span>Fato superveniente</span><input name="fato_superveniente" placeholder="o que mudou depois do julgamento"></label>
+          <label class="marca full"><input type="checkbox" name="mudanca_substancial_presumida">A CAPAG presumida mudou de forma substancial</label>
+        </div>
+      </fieldset>
+      <fieldset class="fs"><legend>Situação da empresa (art. 25)</legend><div class="campos">
+        <label class="campo"><span>Situação cadastral</span><select name="situacao_cadastral"><option>ATIVA</option><option>INAPTA</option><option>SUSPENSA</option><option>BAIXADA</option></select></label>
+        <div class="campo" style="justify-content:flex-end;gap:8px"><label class="marca"><input type="checkbox" name="recuperacao_judicial">Recuperação judicial</label><label class="marca"><input type="checkbox" name="falencia">Falência</label></div>
+      </div></fieldset>
+      <fieldset class="fs"><legend>Documentos do art. 30 em mãos</legend><div class="docs">${DOCS.map(([k,t])=>`<label class="marca"><input type="checkbox" name="doc_${k}">${esc(t)}</label>`).join('')}</div></fieldset>
+      <fieldset class="fs"><legend>Inscrições (para achar crédito já irrecuperável)</legend>
+        <div class="grid" id="cap-creds" style="gap:8px"></div>
+        <div><button class="btn" type="button" data-cred-add>+ inscrição</button></div>
+      </fieldset>
+      <div class="acoes" style="border-top:1px solid var(--line);padding-top:16px;margin-top:22px">
+        <button class="btn" type="button" data-cap="exemplo">Carregar o caso de exemplo</button>
+        <button class="btn" type="button" data-cap="limpar">Limpar</button>
+      </div>
+    </form>
+    <div class="cap-out" id="cap-out"></div>
+  </div>`; },
+
+ motor(){ const m=MOTOR, br=n=>Number(n||0).toLocaleString('pt-BR');
+  return `
+  <div class="eyebrow">Prospecção autônoma</div>
+  <h1>O motor busca devedores da PGFN todo dia às 7h10</h1>
+  <p class="lead">Ele lê os dados abertos da PGFN, dá uma nota a cada empresa e enriquece um lote por dia com telefone, e-mail, CNAE e sócios. Não manda mensagem e não mexe no CRM: a lista fica pronta para a SDR.</p>
+  <div class="grid g4">${[[m.trimestre||'—','dados da PGFN',C.teal],[br(m.empresas),'empresas na faixa',C.blue],[br(m.consultadas),'já consultadas',C.violet],[br(m.leads),'leads prontos',C.amber]].map(([n,t,c])=>`<div class="card" style="--c:${c}"><div class="big" style="font-size:32px">${n}</div><div class="muted">${t}</div></div>`).join('')}</div>
+  <div class="section grid g2">
+    <div class="card"><h2>Como dá a nota (0 a 100)</h2><div class="tbl" style="border:0"><table><tbody>
+      <tr><td>Dívida ainda em cobrança, sem negociação</td><td class="mono">até 30</td></tr>
+      <tr><td>Não ajuizada (antes da execução)</td><td class="mono">até 25</td></tr>
+      <tr><td>Inscrição recente</td><td class="mono">15</td></tr>
+      <tr><td>Faixa de R$ 100 mil a R$ 1 milhão</td><td class="mono">15</td></tr>
+      <tr><td>Empresa da UF preferida</td><td class="mono">10</td></tr>
+      <tr><td>3 ou mais inscrições</td><td class="mono">5</td></tr></tbody></table></div></div>
+    <div class="card"><h2>Rotina</h2><ol style="margin:0;padding-left:18px">
+      <li>Confere se saiu trimestre novo e baixa.</li><li>Soma a dívida por CNPJ (só PJ devedora principal, sem órgãos públicos, falidas e em recuperação).</li>
+      <li>Consulta ${br(m.lote||400)} empresas por dia na BrasilAPI, guardando em cache.</li><li>Grava leads/leads_tributario.csv só com empresas ativas e com telefone.</li></ol>
+      <p class="muted" style="font-size:13px;margin:12px 0 0">Última rodada: ${esc(m.rodada||'—')}. Faixa: R$ 100 mil a R$ 10 milhões.</p></div>
+  </div>`; },
+
+ ferramentas(){ const f=[
+   ['Lista de leads','motor/: dados abertos da PGFN, nota de 0 a 100 e telefone pela BrasilAPI','no kit'],
+   ['Raio-x para a R1','consulta/: cadastro, sócios e inscrições num HTML','no kit'],
+   ['Triagem da conversa','skill triagem-tributaria no Claude Code','no kit'],
+   ['Diagnóstico fiscal','ia/: relatório de passivo a partir dos PDFs do e-CAC e do Regularize','no kit'],
+   ['CAPAG','capag/ + agente avaliador-capag (e a tela deste painel)','no kit'],
+   ['Peças','agente peca-tributaria + teses/ + leis/','no kit'],
+   ['Primeiro contato','Infinitum no número comercial: robô e atendente (POP-ATD-02)','montar'],
+   ['Funil','quadro "Tributário" no Infinitum, um dono por card','montar'],
+   ['Contrato e procuração','modelos/06_contrato_tributario_exito.md e 02_procuracao_pj.md + assinatura gov.br','no kit'],
+   ['Prazos e editais','tarefa no ADVBOX por edital aberto (POP-TRIB-05)','montar'],
+   ['Reuniões','Google Meet ou Zoom com convite automático','comum'],
+   ['Cobrança','Asaas pela régua própria (automacoes/financeiro): fixo parcelado e êxito','no kit']];
+  const cls={'no kit':'ok',comum:'ok',montar:'warn'};
+  return `<div class="eyebrow">O que vem pronto e o que montar</div><h1>A parte técnica já vem no kit</h1><p class="lead">Seis peças estão prontas neste repositório. O resto é ferramenta comum de escritório: WhatsApp, CRM, assinatura digital e agenda.</p>
+  <div class="grid g3">${f.map(([e,d,s])=>`<div class="card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h3>${e}</h3><span class="pill ${cls[s]}">${s}</span></div><p class="muted" style="margin:8px 0 0;font-size:13.5px">${d}</p></div>`).join('')}</div>`; },
+
+ decisoes(){ const d=guarda('decisoes')||[]; return `
+  <div class="eyebrow">Para os sócios</div>
+  <h1>Nove decisões antes de ir a campo</h1>
+  <p class="lead">As duas primeiras travam o resto. Marque o que já foi decidido; a marcação fica só no seu navegador.</p>
+  <div class="card"><ul class="check" id="decs">${DECISOES.map((x,i)=>`<li><input type="checkbox" class="chk" id="dec-${i}" data-dec="${i}" ${d[i]?'checked':''}><label for="dec-${i}">${esc(x)}</label></li>`).join('')}</ul></div>
+  <div class="section"><h2>Primeiros 90 dias</h2><div class="timeline">
+   <div class="card" style="--c:var(--violet)"><span class="pill" style="--c:var(--violet)">DIAS 1 A 30</span><h3 style="margin-top:10px">Montar</h3><ul><li>Quadro no CRM</li><li>Contrato, NDA, procuração e parecer no timbrado</li><li>Rodar o kit num caso real: raio-x, passivo e CAPAG</li><li>Equipe estuda o método e os POPs</li><li>Um caso-piloto do começo ao fim</li></ul></div>
+   <div class="card" style="--c:var(--amber)"><span class="pill" style="--c:var(--amber)">DIAS 31 A 60</span><h3 style="margin-top:10px">Vender</h3><ul><li>Lista do motor: R$ 100 mil a 1 mi, no MA, PA, TO e GO</li><li>Robô SDR no horário comercial</li><li>R1 e R2 com o Dr. Alex</li><li>Medir cada conversão</li></ul></div>
+   <div class="card" style="--c:var(--teal)"><span class="pill" style="--c:var(--teal)">DIAS 61 A 90</span><h3 style="margin-top:10px">Escalar</h3><ul><li>Campanha paga</li><li>Parceria com contadores</li><li>Plano anual de acompanhamento</li><li>POPs no cérebro dos agentes</li><li>Meta mensal com números reais</li></ul></div>
+  </div></div>`; }
+};
+
+function telaPop(p){
+  const i = POPS.indexOf(p), ant = POPS[i-1], prox = POPS[i+1];
+  const feito = guarda('pop:'+p.id) || [];
+  return `
+  <div class="pop-head" style="--c:${p.cor}">
+    <button class="btn" type="button" data-ir="pops">${ico.volta} Todos os POPs</button>
+    <div class="eyebrow" style="margin-top:18px"><span class="dot"></span>POP-${p.cod} · ${p.area}</div>
+    <h1>${esc(p.nome)}</h1>
+    <dl class="meta"><div><dt>Executa</dt><dd>${esc(p.executa)}</dd></div><div><dt>Tempo</dt><dd>${esc(p.tempo)}</dd></div><div><dt>Termina quando</dt><dd>${esc(p.termina)}</dd></div></dl>
+  </div>
+  <ol class="steps" style="--c:${p.cor}">${p.passos.map((s,k)=>`<li class="${feito[k]?'feito':''}"><div style="min-width:0"><h3>${esc(s[0])}</h3>${s[1]?`<p class="muted" style="margin:4px 0 0;font-size:14px">${esc(s[1])}</p>`:''}${s[2]?`<ul>${s[2].map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div><input type="checkbox" class="chk" id="${p.id}-${k}" data-pop="${p.id}" data-k="${k}" ${feito[k]?'checked':''} aria-label="Passo ${k+1} feito"></li>`).join('')}</ol>
+  ${p.arvore?`<div class="section"><h2>Árvore de decisão</h2><div class="tbl tree"><table><thead><tr><th>Se encontrar</th><th>Então</th></tr></thead><tbody>${p.arvore.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join('')}</tbody></table></div></div>`:''}
+  ${p.nota?`<div class="note">${esc(p.nota)}</div>`:''}
+  <div class="popnav">${ant?`<button class="btn" type="button" data-ir="${ant.id}" style="--c:${ant.cor}">${ico.volta} ${ant.cod} · ${esc(ant.nome)}</button>`:'<span></span>'}${prox?`<button class="btn" type="button" data-ir="${prox.id}" style="--c:${prox.cor}">${prox.cod} · ${esc(prox.nome)} ${ico.seta}</button>`:''}</div>`;
+}
+
+const AREA_COR = [C.rose,C.violet,C.teal,C.amber,C.blue,C.coral,C.green,C.rose,C.violet];
+let filtroArea = 'Todas', filtroTexto = '', filtroStatus = '';
+function areas(){ return [...new Set(TESES.map(t=>t.area))]; }
+function corArea(a){ const i = areas().indexOf(a); return AREA_COR.at(i % AREA_COR.length) || C.rose; }
+function desenhaTeses(){
+  const box = $('#lista-teses'); if(!box) return;
+  const q = filtroTexto.toLowerCase();
+  const l = TESES.filter(t => (filtroArea==='Todas'||t.area===filtroArea) && (!filtroStatus||t.status===filtroStatus) && (!q || JSON.stringify(t).toLowerCase().includes(q)));
+  box.innerHTML = l.length ? l.map(t=>`<article class="card tese" style="--c:${corArea(t.area)}"><div class="top"><div><div class="id">${esc(t.id)} · ${esc(t.area)}</div><h3 style="margin-top:4px">${esc(t.titulo)}</h3></div><span class="pill ${t.status==='verificado'?'ok':'warn'}">${t.status==='verificado'?'verificado':'conferir'}</span></div><p style="margin:0">${esc(t.tese)}</p><dl>${[['Quando',t.quando],['Fundamento',t.fundamento],['Jurisprudência',t.juris],['Modelo',t.modelo],['Risco',t.risco]].filter(x=>x[1]).map(([a,b])=>`<dt>${a}</dt><dd>${esc(b)}</dd>`).join('')}</dl></article>`).join('')
+    : `<div class="card empty" style="grid-column:1/-1">${TESES.length?'Nenhuma tese com esse filtro.':'O banco de teses ainda está sendo montado.'}</div>`;
+}
+function desenhaFiltros(){
+  const f = $('#filtros'); if(!f) return;
+  f.innerHTML = ['Todas',...areas()].map(a=>`<button type="button" class="chip" data-area="${esc(a)}" aria-pressed="${a===filtroArea}" style="--c:${a==='Todas'?C.blue:corArea(a)}">${a==='Todas'?'':'<span class="dot" style="width:8px;height:8px"></span>'}${esc(a)}</button>`).join('') +
+   `<button type="button" class="chip" data-status="verificado" aria-pressed="${filtroStatus==='verificado'}" style="--c:var(--ok)">só verificadas</button><input class="search" id="busca" type="search" placeholder="Buscar: CAPAG, prescrição, 14-A…" value="${esc(filtroTexto)}" aria-label="Buscar tese">`;
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-area]'); if(a){ filtroArea = a.dataset.area; desenhaFiltros(); desenhaTeses(); return; }
+  const s = e.target.closest('[data-status]'); if(s){ filtroStatus = filtroStatus ? '' : s.dataset.status; desenhaFiltros(); desenhaTeses(); }
+});
+document.addEventListener('input', e => { if(e.target.id==='busca'){ filtroTexto = e.target.value; desenhaTeses(); } });
+document.addEventListener('change', e => {
+  const t = e.target;
+  if(t.dataset.pop){ const k='pop:'+t.dataset.pop, v=guarda(k)||[]; v[+t.dataset.k]=t.checked; guarda(k,v); t.closest('li').classList.toggle('feito', t.checked); }
+  if(t.dataset.dec !== undefined){ const v=guarda('decisoes')||[]; v[+t.dataset.dec]=t.checked; guarda('decisoes',v); }
+});
+
+/* ---------- banco de leis: filtro ---------- */
+const semAcento = s => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+function desenhaLeis(){
+  const box = $('#lista-leis'); if(!box) return;
+  const q = semAcento(filtroLei);
+  const l = LEIS.filter(x => !q || semAcento(x.sigla+' '+x.nome+' '+x.uso).includes(q));
+  box.innerHTML = l.length ? l.map(l=>`<tr><td class="mono"><b>${esc(l.sigla)}</b></td><td>${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.nome)}</a>`:esc(l.nome)}</td><td class="muted">${esc(l.uso)}</td><td class="mono">${l.artigos}</td></tr>`).join('')
+    : `<tr><td colspan="4" class="empty">Nenhuma norma com esse termo.</td></tr>`;
+}
+
+/* ---------- avaliador da CAPAG (porta de capag/avaliar_capag.py) ---------- */
+const SITUACOES_D = ['BAIXADA','BAIXADO','INAPTA','INAPTO','SUSPENSA','SUSPENSO'];
+const num = v => { if(v===null||v===undefined||v==='') return null; if(typeof v==='number') return v; const s = String(v).replace(/[R$\s]/g,''); const n = Number(s.includes(',') ? s.replace(/\./g,'').replace(',','.') : s.replace(/\.(?=\d{3}(\D|$))/g,'')); return isFinite(n) ? n : null; };
+const dt = s => { if(!s) return null; let m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s) || null; if(m) return Date.UTC(+m[1],+m[2]-1,+m[3]); m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s); return m ? Date.UTC(+m[3],+m[2]-1,+m[1]) : null; };
+const hojeUTC = () => { const h = new Date(); return Date.UTC(h.getFullYear(),h.getMonth(),h.getDate()); };
+const dias = (a,b) => Math.round((b-a)/864e5);
+const anos = (a,b) => dias(a,b)/365.25;
+const brl = v => 'R$ ' + Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const dmy = t => new Date(t).toLocaleDateString('pt-BR',{timeZone:'UTC'});
+const pct = v => Math.round(v);
+
+function avaliarCapag(c, hoje = hojeUTC()){
+  const out=[], travas=[], alertas=[], aFavor=[];
+  const ciencia = dt(c.data_ciencia_capag);
+  if(ciencia!==null){
+    const restam = 30 - dias(ciencia, hoje);
+    if(restam < 0) travas.push(`Prazo do art. 29 vencido há ${-restam} dias (30 dias da ciência em ${dmy(ciencia)}). Conferir se houve nova ciência (nova proposta ou edital) antes de desistir.`);
+    else if(restam <= 7) alertas.push(`Restam ${restam} dias do prazo do art. 29. Protocolo só pelo Regularize (art. 30).`);
+    else out.push(`Prazo do art. 29: restam ${restam} dias.`);
+  } else alertas.push('Data de ciência da CAPAG não informada: o prazo do art. 29 (30 dias) não foi conferido.');
+
+  if(c.pedido_anterior_julgado){
+    const fato = (c.fato_superveniente||'').trim();
+    if(fato) alertas.push(`Já houve pedido julgado. Novo pedido só com fato superveniente (art. 34-B, § 1º). Fato alegado: "${fato}". O pedido precisa demonstrar como ele altera a capacidade.`);
+    else if(c.mudanca_substancial_presumida) alertas.push('Já houve pedido julgado; a mudança substancial da CAPAG presumida autoriza novo pedido (art. 34-B, § 2º). Guardar o print da presumida anterior e da atual.');
+    else travas.push('Já houve pedido julgado e não há fato superveniente nem mudança substancial da presumida: novo pedido não cabe (art. 34-B).');
+  }
+
+  const presumida = num(c.capag_presumida_valor) || 0, passivo = num(c.passivo_total) || 0;
+  const fluxos = (c.fluxo_caixa_livre_anual||[]).map(num).filter(x => x!==null);
+  let estimada = num(c.capacidade_estimada_5anos);
+  if(estimada===null && fluxos.length){
+    estimada = fluxos.reduce((a,b)=>a+b,0)/fluxos.length*5;
+    out.push(`Capacidade estimada = média do fluxo de caixa livre (${fluxos.map(brl).join(', ')}) × 5 anos = ${brl(estimada)}.`);
+  }
+  if(presumida && passivo) out.push(`CAPAG presumida: ${brl(presumida)}, ou ${pct(presumida/passivo*100)}% do passivo total de ${brl(passivo)}.`);
+  if(estimada!==null && presumida){
+    const dif = (presumida-estimada)/presumida*100;
+    if(estimada >= presumida) travas.push(`A capacidade estimada (${brl(estimada)}) é IGUAL OU MAIOR que a presumida (${brl(presumida)}). A revisão pode piorar a classificação: não pedir.`);
+    else if(dif < 15) alertas.push(`A estimada (${brl(estimada)}) é só ${pct(dif)}% menor que a presumida. Ganho incerto: confirmar no Regularize, com simulação, se essa diferença muda a faixa antes de pedir.`);
+    else aFavor.push(`A estimada (${brl(estimada)}) é ${pct(dif)}% menor que a presumida (${brl(presumida)}).`);
+  } else if(estimada===null) alertas.push('Sem capacidade estimada (laudo ou fluxo de caixa): não dá para saber se a revisão ajuda.');
+  if(estimada!==null && passivo && estimada >= passivo) travas.push('A capacidade estimada paga o passivo inteiro em 5 anos (art. 21). Nesse cenário a tendência é crédito de alta recuperação (sem desconto); a revisão não ajuda.');
+
+  const faixa = (c.faixa_atual||'').toUpperCase().trim();
+  if(faixa==='D') travas.push('A faixa atual já é D: não há faixa melhor para buscar com a revisão.');
+  else if(faixa==='A'||faixa==='B') aFavor.push(`Faixa atual ${faixa} não tem desconto, só entrada facilitada. O desconto está em C e D.`);
+  else if(faixa==='C') out.push('Faixa atual C: já há desconto. Revisão só se a estimada indicar D com folga.');
+
+  const sit = (c.situacao_cadastral||'').toUpperCase();
+  if(c.recuperacao_judicial || c.falencia) aFavor.push('Recuperação judicial ou falência: os créditos são irrecuperáveis pelo art. 25, III, sem revisão. Conferir se a situação consta no CNPJ (parágrafo único).');
+  if(SITUACOES_D.some(s => sit.includes(s))) alertas.push(`Situação cadastral "${sit}": conferir se está na lista do art. 25, IV.`);
+  const tipoD = [];
+  (c.creditos||[]).forEach(cr => {
+    let motivo = null;
+    const di = dt(cr.data_inscricao); if(di!==null && anos(di,hoje) > 15 && !cr.garantia_ou_suspensao) motivo = `inscrito há ${Math.round(anos(di,hoje))} anos, sem garantia nem suspensão (art. 25, I)`;
+    const sj = dt(cr.suspensa_judicial_desde); if(sj!==null && anos(sj,hoje) > 10) motivo = `suspenso por decisão judicial há ${Math.round(anos(sj,hoje))} anos (art. 25, II)`;
+    const a40 = dt(cr.execucao_arquivada_art40_desde); if(a40!==null && anos(a40,hoje) > 3) motivo = `execução arquivada pelo art. 40 da LEF há ${Math.round(anos(a40,hoje))} anos (art. 25, VI)`;
+    if(motivo) tipoD.push(`${cr.inscricao||'?'}: ${motivo}`);
+  });
+  if(tipoD.length) aFavor.push({t:'Créditos que já são irrecuperáveis (tipo D) sem revisão. Conferir se o Regularize já os classifica assim; se não, isso vai no pedido:', sub:tipoD});
+
+  const docs = c.documentos || {};
+  const faltam = DOCS.filter(([k]) => !docs[k]).map(([,t,b]) => `${t} (${b})`);
+  if(faltam.length) alertas.push({t:`Faltam ${faltam.length} documentos do art. 30. Sem eles a PGFN dá 10 dias para sanar e, se não vierem, não conhece o pedido (art. 31, § 1º):`, sub:faltam});
+  if((c.dfc_metodo||'').toLowerCase().startsWith('indir')) alertas.push('DFC pelo método INDIRETO: na prática gera despacho de exigência. Refazer pelo método direto.');
+
+  let veredito, tom;
+  if(travas.length){ veredito='Não pedir a revisão agora'; tom='crit'; }
+  else if(estimada===null || presumida===0 || faltam.length > 3){ veredito='Falta dado para decidir'; tom='warn'; }
+  else if(aFavor.length){ veredito='Revisão recomendada, depois de confirmar o ganho de faixa no Regularize'; tom='ok'; }
+  else { veredito='Revisão possível, ganho não demonstrado'; tom='warn'; }
+  return {veredito, tom, travas, alertas, aFavor, out};
+}
+const itemTxt = i => typeof i==='string' ? i : i.t + '\n' + i.sub.map(s=>'    - '+s).join('\n');
+function relatorioCapag(c){
+  const r = avaliarCapag(c), L = [`# Avaliação da CAPAG: ${c.empresa||'empresa'}`, '', `CNPJ ${c.cnpj||'[CONFERIR]'} · avaliado em ${dmy(hojeUTC())}`, '', '## Veredito', '', `**${r.veredito.toUpperCase()}**`];
+  [['Travas',r.travas],['A favor da revisão',r.aFavor],['Alertas',r.alertas],['Números e prazos',r.out]].forEach(([t,it]) => { if(it.length) L.push('', '## '+t, '', ...it.map(i=>'- '+itemTxt(i))); });
+  L.push('', '## Limites desta avaliação', '', '- A faixa A/B/C/D não foi calculada: a fórmula da PGFN não é pública. Ela sai do Regularize.', '- Edital, desconto, entrada e prazo: conferir no Regularize no dia.', '- Base: Portaria PGFN 6.757/2022, arts. 21 a 34-B (texto em `leis/`, `python leis/buscar_lei.py PORT6757 30`).', '- Julgado o pedido, cabe recurso em 10 dias pelo Regularize (art. 34-A).', '', 'Minuta automática para revisão do advogado responsável.');
+  return L.join('\n');
+}
+function credLinha(cr={}, i){
+  return `<div class="cred" data-cred="${i}">
+    <label class="campo"><span>Inscrição</span><input data-c="inscricao" value="${esc(cr.inscricao||'')}" placeholder="80 6 09 000001-01"></label>
+    <label class="campo"><span>Inscrita em</span><input type="date" data-c="data_inscricao" value="${esc(cr.data_inscricao||'')}"></label>
+    <label class="campo"><span>Suspensa por juiz desde</span><input type="date" data-c="suspensa_judicial_desde" value="${esc(cr.suspensa_judicial_desde||'')}"></label>
+    <label class="campo"><span>Arquivada (art. 40) desde</span><input type="date" data-c="execucao_arquivada_art40_desde" value="${esc(cr.execucao_arquivada_art40_desde||'')}"></label>
+    <button class="x" type="button" data-cred-del="${i}" aria-label="Tirar esta inscrição"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <label class="marca full"><input type="checkbox" data-c="garantia_ou_suspensao" ${cr.garantia_ou_suspensao?'checked':''}>Tem garantia ou exigibilidade suspensa</label>
+  </div>`;
+}
+function lerCaso(){
+  const f = $('#cap-form'); if(!f) return null; const v = n => f.elements[n];
+  const c = {empresa:v('empresa').value.trim(), cnpj:v('cnpj').value.trim(), faixa_atual:v('faixa_atual').value,
+    capag_presumida_valor:num(v('capag_presumida_valor').value), data_ciencia_capag:v('data_ciencia_capag').value,
+    passivo_total:num(v('passivo_total').value), fluxo_caixa_livre_anual:['fc0','fc1','fc2'].map(n=>num(v(n).value)).filter(x=>x!==null),
+    capacidade_estimada_5anos:num(v('capacidade_estimada_5anos').value), pedido_anterior_julgado:v('pedido_anterior_julgado').checked,
+    fato_superveniente:v('fato_superveniente').value, mudanca_substancial_presumida:v('mudanca_substancial_presumida').checked,
+    dfc_metodo:v('dfc_metodo').value, situacao_cadastral:v('situacao_cadastral').value, recuperacao_judicial:v('recuperacao_judicial').checked, falencia:v('falencia').checked,
+    documentos:Object.fromEntries(DOCS.map(([k])=>[k, v('doc_'+k).checked])), creditos:[]};
+  f.querySelectorAll('[data-cred]').forEach(row => { const cr = {}; row.querySelectorAll('[data-c]').forEach(i => { cr[i.dataset.c] = i.type==='checkbox' ? i.checked : i.value.trim(); }); if(cr.inscricao || cr.data_inscricao || cr.suspensa_judicial_desde || cr.execucao_arquivada_art40_desde) c.creditos.push(cr); });
+  return c;
+}
+const fmtNum = n => n===null||n===undefined||n==='' ? '' : Number(n).toLocaleString('pt-BR');
+function preencherCaso(c){
+  const f = $('#cap-form'); if(!f) return; const v = n => f.elements[n];
+  ['empresa','cnpj','data_ciencia_capag','fato_superveniente'].forEach(n => v(n).value = c[n]||'');
+  v('faixa_atual').value = c.faixa_atual||''; v('dfc_metodo').value = c.dfc_metodo||''; v('situacao_cadastral').value = c.situacao_cadastral||'ATIVA';
+  ['capag_presumida_valor','passivo_total','capacidade_estimada_5anos'].forEach(n => v(n).value = fmtNum(c[n]));
+  ['fc0','fc1','fc2'].forEach((n,i) => v(n).value = fmtNum((c.fluxo_caixa_livre_anual||[])[i]));
+  ['pedido_anterior_julgado','mudanca_substancial_presumida','recuperacao_judicial','falencia'].forEach(n => v(n).checked = !!c[n]);
+  DOCS.forEach(([k]) => v('doc_'+k).checked = !!(c.documentos||{})[k]);
+  const cr = (c.creditos && c.creditos.length) ? c.creditos : [{}];
+  $('#cap-creds').innerHTML = cr.map(credLinha).join('');
+}
+function desenhaCap(){
+  const box = $('#cap-out'); if(!box) return;
+  const c = lerCaso(); guarda('capag:caso', c);
+  $('#cap-34b').style.display = c.pedido_anterior_julgado ? '' : 'none';
+  const r = avaliarCapag(c);
+  const li = i => typeof i==='string' ? `<li>${esc(i)}</li>` : `<li>${esc(i.t)}<ul>${i.sub.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></li>`;
+  const bloco = (t,it,cl) => it.length ? `<div class="blk"><h3><span class="dot" style="--c:var(--${cl})"></span>${t} <span class="muted mono" style="font-weight:500">${it.length}</span></h3><ul>${it.map(li).join('')}</ul></div>` : '';
+  box.innerHTML = `<div class="veredito" style="--c:var(--${r.tom})"><div class="eyebrow" style="--c:var(--${r.tom})">Veredito${c.empresa?' · '+esc(c.empresa):''}</div><div class="v">${esc(r.veredito)}</div></div>
+    <div class="card" style="margin-top:12px">${bloco('Travas',r.travas,'crit')}${bloco('A favor da revisão',r.aFavor,'ok')}${bloco('Alertas',r.alertas,'warn')}${bloco('Números e prazos',r.out,'blue')}
+      <p class="muted" style="font-size:12.5px;margin:16px 0 0">A faixa A/B/C/D sai do Regularize. Edital, desconto, entrada e prazo: conferir no dia. Julgado o pedido, cabe recurso em 10 dias (art. 34-A).</p>
+      <div class="acoes"><button class="btn" type="button" data-cap="copiar">Copiar o relatório</button><button class="btn" type="button" data-cap="json">Baixar caso.json</button><button class="btn" type="button" data-cap="imprimir">Imprimir</button></div></div>`;
+}
+function iniciaCap(){ const salvo = guarda('capag:caso'); preencherCaso(salvo || {}); desenhaCap(); }
+
+/* ---------- busca geral ---------- */
+function indice(){
+  const it = [];
+  TELAS.forEach(t => it.push({k:'TELA', c:t.cor, t:t.nome, d:'', ir:t.id}));
+  POPS.forEach(p => it.push({k:'POP-'+p.cod, c:p.cor, t:p.nome, d:p.executa+' · '+p.tempo, ir:p.id, txt:JSON.stringify(p.passos)+(p.nota||'')+JSON.stringify(p.arvore||'')}));
+  TESES.forEach(t => it.push({k:t.id, c:C.rose, t:t.titulo, d:t.area, ir:'teses', tese:t.id, txt:t.tese+t.fundamento+t.quando+t.juris}));
+  LEIS.forEach(l => it.push({k:l.sigla, c:C.violet, t:l.nome, d:l.uso, ir:'leis', lei:l.sigla}));
+  KIT.forEach(k => it.push({k:'KIT', c:k.cor, t:k.nome, d:k.pasta, ir:'kit', txt:k.d+k.cmd.join(' ')}));
+  DECISOES.forEach(d => it.push({k:'DECISÃO', c:C.blue, t:d, d:'', ir:'decisoes'}));
+  return it.map(x => ({...x, s:semAcento([x.k,x.t,x.d,x.txt].join(' '))}));
+}
+let IDX = null, sbSel = 0, sbLista = [];
+function abreBusca(){ IDX = IDX || indice(); $('#sb').classList.add('aberto'); const q = $('#sb-q'); q.value=''; desenhaBusca(); q.focus(); }
+function fechaBusca(){ $('#sb').classList.remove('aberto'); }
+function desenhaBusca(){
+  const termos = semAcento($('#sb-q').value).split(/\s+/).filter(Boolean);
+  sbLista = (termos.length ? IDX.filter(x => termos.every(t => x.s.includes(t))) : IDX.filter(x => x.k==='TELA')).slice(0,30);
+  sbSel = 0;
+  $('#sb-res').innerHTML = sbLista.length ? sbLista.map((x,i)=>`<button type="button" role="option" data-sb="${i}" class="${i?'':'sel'}" style="--c:${x.c}"><span class="k">${esc(x.k)}</span><span class="t">${esc(x.t)}</span><span class="d">${esc(x.d)}</span></button>`).join('') : '<div class="sb-vazio">Nada encontrado. Tente outra palavra.</div>';
+}
+function escolhe(i){
+  const x = sbLista[i]; if(!x) return; fechaBusca();
+  if(x.tese){ filtroArea='Todas'; filtroStatus=''; filtroTexto=x.tese; }
+  if(x.lei) filtroLei = x.lei;
+  if(location.hash.slice(1)===x.ir) render(); else ir(x.ir);
+}
+function marcaSel(){ $('#sb-res').querySelectorAll('[data-sb]').forEach((b,i)=>{ b.classList.toggle('sel', i===sbSel); if(i===sbSel) b.scrollIntoView({block:'nearest'}); }); }
+$('#sb-q').addEventListener('input', desenhaBusca);
+$('#sb-q').addEventListener('keydown', e => {
+  if(e.key==='ArrowDown'){ e.preventDefault(); sbSel = Math.min(sbSel+1, sbLista.length-1); marcaSel(); }
+  else if(e.key==='ArrowUp'){ e.preventDefault(); sbSel = Math.max(sbSel-1, 0); marcaSel(); }
+  else if(e.key==='Enter'){ e.preventDefault(); escolhe(sbSel); }
+});
+$('#sb').addEventListener('click', e => { if(e.target.id==='sb') fechaBusca(); });
+document.addEventListener('keydown', e => {
+  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); $('#sb').classList.contains('aberto') ? fechaBusca() : abreBusca(); }
+  else if(e.key==='/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){ e.preventDefault(); abreBusca(); }
+  else if(e.key==='Escape' && $('#sb').classList.contains('aberto')) fechaBusca();
+});
+
+document.addEventListener('click', e => {
+  if(e.target.closest('[data-busca]')){ abreBusca(); return; }
+  const sb = e.target.closest('[data-sb]'); if(sb){ escolhe(+sb.dataset.sb); return; }
+  const cp = e.target.closest('[data-copiar]'); if(cp){ copiar(cp.dataset.copiar); return; }
+  if(e.target.closest('[data-cred-add]')){ const box=$('#cap-creds'); box.insertAdjacentHTML('beforeend', credLinha({}, box.children.length)); box.lastElementChild.querySelector('input').focus(); return; }
+  const del = e.target.closest('[data-cred-del]'); if(del){ del.closest('.cred').remove(); if(!$('#cap-creds').children.length) $('#cap-creds').innerHTML = credLinha({},0); desenhaCap(); return; }
+  const a = e.target.closest('[data-cap]'); if(!a) return;
+  const acao = a.dataset.cap;
+  if(acao==='exemplo'){ preencherCaso(EXEMPLO_CAPAG); desenhaCap(); toast('Caso de exemplo carregado'); }
+  if(acao==='limpar'){ preencherCaso({}); desenhaCap(); }
+  if(acao==='copiar') copiar(relatorioCapag(lerCaso()));
+  if(acao==='imprimir') print();
+  if(acao==='json'){ const c = lerCaso(); const b = new Blob([JSON.stringify(c,null,2)],{type:'application/json'}); const u = URL.createObjectURL(b); const l = document.createElement('a'); l.href=u; l.download='caso.json'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); toast('caso.json baixado: rode capag/avaliar_capag.py caso.json'); }
+});
+document.addEventListener('input', e => {
+  if(e.target.id==='busca-lei'){ filtroLei = e.target.value; desenhaLeis(); }
+  if(e.target.closest('#cap-form')) desenhaCap();
+});
+document.addEventListener('change', e => { if(e.target.closest('#cap-form')) desenhaCap(); });
+
+function ondas(){
+  const cv = $('#ondas'); if(!cv) return;
+  const ctx = cv.getContext('2d'), dpr = Math.min(2, devicePixelRatio||1);
+  const cores = ['--blue','--violet','--coral','--amber','--teal'].map(v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim());
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t0 = performance.now();
+  function frame(now){
+    if(!document.body.contains(cv)) return;
+    const w = cv.clientWidth, h = cv.clientHeight; if(cv.width !== w*dpr){ cv.width = w*dpr; cv.height = h*dpr; }
+    ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h);
+    const t = quieto ? 0 : (now - t0)/1000;
+    cores.forEach((c,i)=>{
+      ctx.beginPath(); ctx.lineWidth = 1.6; ctx.strokeStyle = c; ctx.globalAlpha = .45;
+      for(let x=0;x<=w;x+=8){ const y = h*.72 + Math.sin(x/(120+i*28) + t*(.5+i*.12) + i) * (18+i*7) - i*14; x?ctx.lineTo(x,y):ctx.moveTo(x,y); }
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+    if(!quieto) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+function depois(id){ if(id==='inicio') ondas(); if(id==='teses'){ desenhaFiltros(); desenhaTeses(); } if(id==='leis') desenhaLeis(); if(id==='capag') iniciaCap(); $('#stage').focus({preventScroll:true}); }
+
+$('#tema').addEventListener('click', () => {
+  const r = document.documentElement, escuro = r.dataset.theme !== 'light';
+  r.dataset.theme = escuro ? 'light' : 'dark'; guarda('tema', r.dataset.theme); if(atual==='inicio') ondas();
+});
+(() => { const t = guarda('tema'); if(t) document.documentElement.dataset.theme = t; })();
+navegar(); render();
+</script>
