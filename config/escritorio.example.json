@@ -1,0 +1,135 @@
+{
+  "_doc": "Copie para escritorio.json e preencha. Nada aqui e credencial (credencial vai em .env). Campo vazio = ainda nao informado pelo escritorio: o script avisa e nao age. Nao invente valor.",
+
+  "escritorio": {
+    "nome_comercial": ""
+  },
+
+  "aprovador": {
+    "_doc": "Quem recebe a lista de pagamentos do dia e o resumo financeiro (Dra. Lais). WhatsApp com DDD.",
+    "nome": "",
+    "whatsapp": ""
+  },
+
+  "mensageria": {
+    "_doc": "modo: 'fila' (padrao: gera dados/fila_mensagens.jsonl + CSV para a equipe enviar) ou 'infinitum_card' (cria card no POP de envios; a automacao nativa do Infinitum dispara o WhatsApp). IDs: GET /pops/{id} e /pop-fields/by-pop.",
+    "modo": "fila",
+    "infinitum": {
+      "org_id": "",
+      "pop_id": "",
+      "fase_id": "",
+      "campo_telefone_id": "",
+      "campo_mensagem_id": ""
+    }
+  },
+
+  "webhook_infinitum": {
+    "_doc": "Rotulos (labels) dos campos do card criado pela automacao 'Mensagem no WhatsApp -> Crie card'.",
+    "campo_telefone": "telefone",
+    "campo_arquivo": "arquivo",
+    "campo_legenda": "mensagem"
+  },
+
+  "drive": {
+    "_doc": "ID da pasta raiz do escritorio no Google Drive (ou do Drive compartilhado).",
+    "raiz_id": ""
+  },
+
+  "advbox": {
+    "_doc": "IDs do ADVBOX (GET /settings). A API exige um processo (lawsuits_id) em toda tarefa: processo_administrativo_id e um registro interno para tarefas de RH/financeiro/triagem.",
+    "usuario_robo_id": "",
+    "processo_administrativo_id": "",
+    "tipos_tarefa": {
+      "prazo": "",
+      "confirmar_classificacao": "",
+      "custas": "",
+      "audiencia": "",
+      "documento_recebido": "",
+      "rh": "",
+      "financeiro": ""
+    },
+    "responsaveis": {
+      "civel": "",
+      "trabalhista": "",
+      "tributario": "",
+      "contratos": "",
+      "controladoria": "",
+      "atendimento": "",
+      "financeiro": "",
+      "rh": ""
+    }
+  },
+
+  "controladoria": {
+    "_doc": "OABs monitoradas no DJEN. Numero so com digitos. Preencher com os dados reais (Laís, Alex, Larissa, Jaqueline...).",
+    "oabs": [
+      {"nome": "", "numero": "", "uf": ""}
+    ],
+    "dias_retroativos": 3,
+    "prazo_interno_dias_uteis": 2
+  },
+
+  "regua": {
+    "_doc": "Marcos em dias antes do vencimento (MSG-07). atraso_ativo fica false ate a Dra. Lais confirmar dias e tom da cobranca em atraso.",
+    "marcos": [10, 5, 3, 0],
+    "tolerancia_dias": 1,
+    "aviso_pagamento": true,
+    "atraso_ativo": false,
+    "atraso_marcos": [1, 7]
+  },
+
+  "cobranca": {
+    "_doc": "Multa (%) e juros ao mes (%) das cobrancas do Asaas. Vazio = sem multa/juros. Definir com a Dra. Lais.",
+    "multa_percent": null,
+    "juros_mes": null
+  },
+
+  "fiscal": {
+    "_doc": "Dados da NFS-e: vem do CONTADOR (codigo do servico no municipio, aliquotas, regime). emitir_desde = data de corte: nada anterior e emitido.",
+    "emitir_desde": "",
+    "max_por_rodada": 20,
+    "municipalServiceName": "",
+    "municipalServiceCode": "",
+    "municipalServiceId": "",
+    "serviceDescription_padrao": "",
+    "observations_padrao": "",
+    "deductions": 0,
+    "taxes": {
+      "retainIss": null,
+      "iss": null,
+      "pis": null,
+      "cofins": null,
+      "csll": null,
+      "inss": null,
+      "ir": null
+    }
+  },
+
+  "pagamentos": {
+    "antecipar_fim_de_semana": true
+  },
+
+  "rh": {
+    "_doc": "provedor: 'manual' (gov.br, custo zero) ou 'zapsign' (precisa ZAPSIGN_API_TOKEN). signatarios_escritorio: quem assina pelo escritorio.",
+    "assinatura": {"provedor": "manual"},
+    "modelos_por_vinculo": {
+      "estagiario": "09_termo_compromisso_estagio.md",
+      "associado": "08_contrato_associacao_advogado.md"
+    },
+    "signatarios_escritorio": [
+      {"nome": "", "papel": "escritorio", "email": "", "telefone": ""}
+    ]
+  },
+
+  "modelos_comuns": {
+    "_doc": "Campos {{escritorio_*}} e {{lais_*}} usados por todos os modelos de modelos/ (ver modelos/README.md).",
+    "escritorio_razao_social": "",
+    "escritorio_cnpj": "",
+    "escritorio_endereco": "",
+    "escritorio_registro_oab": "",
+    "lais_nome": "",
+    "lais_oab": "",
+    "cidade_assinatura": "",
+    "foro_comarca": ""
+  }
+}

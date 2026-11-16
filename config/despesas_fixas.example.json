@@ -1,0 +1,18 @@
+{
+  "_doc": "Copie para despesas_fixas.json. forma: pix (agendado pelo Asaas) | boleto (pagamentos.py boleto com a linha digitavel do mes) | fora_asaas (so entra no relatorio como previsto). ativo=false ate a Dra. Lais conferir.",
+  "despesas": [
+    {
+      "id": "exemplo-aluguel",
+      "descricao": "Aluguel",
+      "favorecido": "",
+      "cpf_cnpj": "",
+      "valor": null,
+      "dia": null,
+      "forma": "pix",
+      "pix_chave": "",
+      "pix_tipo": "",
+      "categoria": "estrutura",
+      "ativo": false
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "_doc": "Fonte unica dos nomes de pasta do Drive. Mudou aqui, muda em todos os scripts (comum/estrutura.py). Explicacao em ESTRUTURA_DRIVE.md.",
+  "raiz": {
+    "00_ESCRITORIO": {
+      "POPS": {},
+      "CHECKLISTS": {},
+      "MODELOS": {"CLIENTES": {}, "RH": {}, "PECAS": {}},
+      "MENSAGENS": {},
+      "CONTROLADORIA": {},
+      "COMERCIAL": {},
+      "ENTRADA_WHATSAPP": {},
+      "BACKUPS": {}
+    },
+    "RH": {},
+    "FINANCEIRO": {},
+    "CLIENTES": {}
+  },
+  "financeiro_mes": ["RELATORIOS", "COMPROVANTES", "NOTAS_FISCAIS"],
+  "colaborador": ["01_DOCUMENTOS_PESSOAIS", "02_CONTRATO_E_ADITIVOS", "03_PAGAMENTOS",
+                  "04_RELATORIOS_E_AVALIACOES", "05_DESLIGAMENTO"],
+  "cliente": ["01_CONTRATO_E_DOCUMENTOS", "02_JUDICIAL", "03_EXTRAJUDICIAL", "99_A_CLASSIFICAR"],
+  "cliente_assessoria": ["04_ASSESSORIA_DIAGNOSTICO"],
+  "cliente_tributario": {"05_TRIBUTARIO": ["01_DOCUMENTOS_FISCAIS", "02_RELATORIOS", "03_PETICOES"]},
+  "processo": ["01_DOCUMENTOS_DO_CLIENTE", "02_PECAS", "03_DECISOES_E_INTIMACOES", "04_CUSTAS_E_GUIAS"],
+  "demanda": ["01_DOCUMENTOS_RECEBIDOS", "02_PRODUCAO", "03_ENTREGUE"]
+}

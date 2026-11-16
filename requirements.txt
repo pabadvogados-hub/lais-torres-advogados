@@ -1,0 +1,13 @@
+# Automacoes do escritorio (Python 3.10+)
+requests>=2.31
+python-dotenv>=1.0
+# Google Drive
+google-api-python-client>=2.100
+google-auth>=2.23
+google-auth-oauthlib>=1.1
+# contratos (.docx) e leitura de pecas
+python-docx>=1.1
+# planilha do relatorio financeiro (sem ela, o relatorio sai em .csv)
+openpyxl>=3.1
+# leitura de peca em PDF (revisor-pecas)
+pypdf>=4.0

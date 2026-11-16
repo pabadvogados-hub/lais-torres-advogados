@@ -1,0 +1,30 @@
+{
+  "_doc": "Copie para colaboradores.json (fora do Git: CPF e chave Pix). vinculo: estagiario | associado | empregado | apoio. A chave Pix vem do formulario preenchido pelo PROPRIO colaborador (POP-ADM-01), nunca de conversa antiga. pix_tipo: CPF | CNPJ | EMAIL | PHONE | EVP. pagamento.ativo=false ate a Dra. Lais conferir. dados_contrato = as {{chaves}} do modelo do vinculo (ver o bloco 'Campos' do modelo em modelos/).",
+  "colaboradores": [
+    {
+      "id": "exemplo-estagiario",
+      "nome": "",
+      "cpf": "",
+      "vinculo": "estagiario",
+      "funcao": "",
+      "area": "",
+      "whatsapp": "",
+      "email": "",
+      "inicio": "",
+      "desligado_em": "",
+      "pagamento": {"valor": null, "dia": null, "pix_chave": "", "pix_tipo": "", "ativo": false, "descricao": ""},
+      "dados_contrato": {
+        "estagiario_nome": "",
+        "estagiario_cpf": "",
+        "ies_nome": "",
+        "ies_representante": "",
+        "ies_email": "",
+        "data_inicio": "",
+        "data_termino": "",
+        "horario_estagio": "",
+        "valor_bolsa": "",
+        "valor_auxilio_transporte": ""
+      }
+    }
+  ]
+}

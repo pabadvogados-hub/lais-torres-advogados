@@ -1,0 +1,30 @@
+{
+  "_doc": "DADOS FICTICIOS para teste offline (data de referencia 2026-12-05). Nenhum cliente real.",
+  "/customers": [
+    {"id": "cus_TESTE_PJ", "name": "OFICINA FICTICIA LTDA", "cpfCnpj": "11222333000181", "mobilePhone": "62900000001"},
+    {"id": "cus_TESTE_PF", "name": "Maria Ficticia da Silva", "cpfCnpj": "00000000191", "mobilePhone": "99900000002"}
+  ],
+  "/payments": [
+    {"id": "pay_T1", "customer": "cus_TESTE_PF", "status": "PENDING", "value": 1500.0, "dueDate": "2026-12-15",
+     "description": "honorários de assessoria de dezembro/2026", "invoiceUrl": "https://exemplo.invalid/i/T1"},
+    {"id": "pay_T2", "customer": "cus_TESTE_PF", "status": "PENDING", "value": 800.0, "dueDate": "2026-12-10",
+     "description": "honorários do contrato de revisão (parcela 2 de 3)", "invoiceUrl": "https://exemplo.invalid/i/T2"},
+    {"id": "pay_T3", "customer": "cus_TESTE_PJ", "status": "PENDING", "value": 2000.0, "dueDate": "2026-12-08",
+     "description": "honorários de assessoria de dezembro/2026", "invoiceUrl": "https://exemplo.invalid/i/T3"},
+    {"id": "pay_T4", "customer": "cus_TESTE_PF", "status": "PENDING", "value": 300.0, "dueDate": "2026-12-05",
+     "description": "honorários de consulta", "invoiceUrl": "https://exemplo.invalid/i/T4"},
+    {"id": "pay_T5", "customer": "cus_TESTE_PF", "status": "PENDING", "value": 300.0, "dueDate": "2026-12-12",
+     "description": "honorários de consulta", "invoiceUrl": "https://exemplo.invalid/i/T5"},
+    {"id": "pay_T6", "customer": "cus_TESTE_PF", "status": "RECEIVED", "value": 1500.0, "netValue": 1498.01,
+     "dueDate": "2026-12-03", "paymentDate": "2026-12-04",
+     "description": "honorários de assessoria de novembro/2026", "invoiceUrl": "https://exemplo.invalid/i/T6"},
+    {"id": "pay_T7", "customer": "cus_TESTE_PJ", "status": "OVERDUE", "value": 2000.0, "dueDate": "2026-11-20",
+     "description": "honorários de assessoria de novembro/2026", "invoiceUrl": "https://exemplo.invalid/i/T7"}
+  ],
+  "/financialTransactions": [
+    {"date": "2026-12-04", "type": "PAYMENT_RECEIVED", "value": 1498.01, "description": "Cobrança pay_T6"},
+    {"date": "2026-12-04", "type": "PAYMENT_FEE", "value": -1.99, "description": "Taxa boleto pay_T6"},
+    {"date": "2026-12-04", "type": "TRANSFER", "value": -1200.0, "description": "Pix estagiário (fictício)"}
+  ],
+  "/finance/balance": {"balance": 2500.0}
+}

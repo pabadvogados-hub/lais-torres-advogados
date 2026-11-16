@@ -1,0 +1,67 @@
+{
+  "_doc": "Checklist de admissao por vinculo. Fonte: pops/POP-ADM-01-contratacao-de-colaborador.md (v1, 16/11/2026). 'pasta' = subpasta em RH/<NOME - VINCULO>/. Mudou o POP, muda aqui.",
+  "estagiario": {
+    "rotulo": "Estagiario(a)",
+    "modelo": "09_termo_compromisso_estagio.md",
+    "documentos": [
+      {"chave": "rg_cpf", "item": "RG e CPF (ou CNH)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "endereco", "item": "Comprovante de endereco recente", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "matricula", "item": "Comprovante de matricula e frequencia no curso", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "dados_ies", "item": "Dados da instituicao de ensino e do professor orientador", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "oab_estagiario", "item": "Carteira da OAB de estagiario (se inscrito)", "pasta": "01_DOCUMENTOS_PESSOAIS", "opcional": true},
+      {"chave": "pix_banco", "item": "Chave Pix e dados bancarios (formulario preenchido pelo proprio colaborador)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "emergencia", "item": "Contato de emergencia", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "seguro", "item": "Apolice do seguro contra acidentes pessoais (Lei 11.788/2008, art. 9o, IV) — antes do 1o dia", "pasta": "02_CONTRATO_E_ADITIVOS"},
+      {"chave": "contrato", "item": "Termo de compromisso assinado pelas 3 partes (estudante, escritorio, instituicao)", "pasta": "02_CONTRATO_E_ADITIVOS"}
+    ],
+    "lembretes": [
+      {"tarefa": "[RH] Relatorio semestral de estagio", "a_cada_meses": 6},
+      {"tarefa": "[RH] Vencimento do termo de estagio", "antes_do_fim_dias": 30}
+    ]
+  },
+  "associado": {
+    "rotulo": "Advogado(a) associado(a)",
+    "modelo": "08_contrato_associacao_advogado.md",
+    "documentos": [
+      {"chave": "rg_cpf", "item": "RG e CPF (ou CNH)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "endereco", "item": "Comprovante de endereco recente", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "oab", "item": "Carteira da OAB", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "certidao_oab", "item": "Certidao de regularidade na OAB", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "pix_banco", "item": "Chave Pix e dados bancarios (formulario preenchido pelo proprio colaborador)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "emergencia", "item": "Contato de emergencia", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "contrato", "item": "Contrato de associacao assinado", "pasta": "02_CONTRATO_E_ADITIVOS"},
+      {"chave": "averbacao", "item": "Protocolo e certidao da averbacao na OAB (RG EAOAB art. 39)", "pasta": "02_CONTRATO_E_ADITIVOS"}
+    ],
+    "lembretes": [
+      {"tarefa": "[RH] Averbacao na OAB", "apos_assinatura_dias_uteis": 10}
+    ]
+  },
+  "empregado": {
+    "rotulo": "Advogado(a) empregado(a) / CLT",
+    "modelo": null,
+    "documentos": [
+      {"chave": "rg_cpf", "item": "RG e CPF (ou CNH)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "endereco", "item": "Comprovante de endereco recente", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "oab", "item": "Carteira da OAB (se advogado)", "pasta": "01_DOCUMENTOS_PESSOAIS", "opcional": true},
+      {"chave": "certidao_oab", "item": "Certidao de regularidade na OAB (se advogado)", "pasta": "01_DOCUMENTOS_PESSOAIS", "opcional": true},
+      {"chave": "pix_banco", "item": "Chave Pix e dados bancarios (formulario preenchido pelo proprio colaborador)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "emergencia", "item": "Contato de emergencia", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "ctps_pis", "item": "CTPS digital e PIS", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "aso", "item": "Exame admissional (ASO)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "contrato", "item": "Contrato de trabalho assinado (modelo a definir com o contador)", "pasta": "02_CONTRATO_E_ADITIVOS"}
+    ],
+    "lembretes": []
+  },
+  "apoio": {
+    "rotulo": "Apoio / meio periodo (vinculo [A CONFIRMAR] com o contador)",
+    "modelo": null,
+    "documentos": [
+      {"chave": "rg_cpf", "item": "RG e CPF (ou CNH)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "endereco", "item": "Comprovante de endereco recente", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "pix_banco", "item": "Chave Pix e dados bancarios (formulario preenchido pelo proprio colaborador)", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "emergencia", "item": "Contato de emergencia", "pasta": "01_DOCUMENTOS_PESSOAIS"},
+      {"chave": "contrato", "item": "Instrumento do vinculo assinado (definir o modelo)", "pasta": "02_CONTRATO_E_ADITIVOS"}
+    ],
+    "lembretes": []
+  }
+}

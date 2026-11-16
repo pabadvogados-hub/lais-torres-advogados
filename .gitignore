@@ -1,0 +1,36 @@
+# Credenciais e tokens — nunca versionar
+config/.env
+.env
+*.env
+!config/.env.example
+config/token*.json
+config/oauth*.json
+config/credentials*.json
+config/*secret*
+config/*.senha
+*.pem
+*.key
+
+# Cadastros com dado pessoal (CPF, chave Pix, telefone): ficam so na maquina/VPS e no backup cifrado
+config/*.json
+!config/*.example.json
+
+# Estado, filas, relatorios, backups
+dados/
+backups/
+*.db
+*.sqlite
+*.tar.gz
+*.tar.gz.enc
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Transcricoes de reuniao: conteudo pessoal do cliente, nunca em repo publico
+docs/KICKOFF_*
+docs/*transcricao*
+*.mp4
+

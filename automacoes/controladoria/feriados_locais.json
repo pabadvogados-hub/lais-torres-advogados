@@ -1,0 +1,6 @@
+{
+  "_doc": "Feriados estaduais e municipais que suspendem prazo. NASCE VAZIO DE PROPOSITO: so entra o que a controladoria conferir no calendario oficial do tribunal (TJMA, TJGO, TJTO, TJPA, TRT16, TRT18, TRT10, TRT8, TRF1) e da comarca (Imperatriz, Goiania e a do processo). Feriado errado empurra o prazo para frente; omitido puxa para tras (seguro). Formato: UF -> [\"MM-DD\"]; COMARCA -> \"UF:comarca sem acento minuscula\" -> [\"MM-DD\"]; DATAS -> UF ou UF:comarca -> {\"AAAA-MM-DD\": \"portaria que suspendeu\"} (vale so naquele ano).",
+  "UF": {},
+  "COMARCA": {},
+  "DATAS": {}
+}

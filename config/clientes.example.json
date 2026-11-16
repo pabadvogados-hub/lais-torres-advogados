@@ -1,0 +1,26 @@
+{
+  "_doc": "Copie para clientes.json (fora do Git: tem dado pessoal). Um registro por cliente. Usado pela regua (contato e telefone), pela NF (antes/depois), pelo roteamento de documentos do WhatsApp e pela controladoria (processo -> ADVBOX). Os valores abaixo sao EXEMPLO FICTICIO.",
+  "clientes": [
+    {
+      "id": "exemplo-oficina",
+      "nome": "OFICINA EXEMPLO LTDA",
+      "cpf_cnpj": "",
+      "tipo": "assessoria",
+      "tributario": false,
+      "area_padrao": "civel",
+      "whatsapps": [""],
+      "email": "",
+      "contato_financeiro": {"nome": "", "whatsapp": ""},
+      "asaas_customer_id": "",
+      "nf": {"quando": "depois", "dias_antes": 10},
+      "assessoria": {"valor_mensal": null, "dia_vencimento": null},
+      "advbox": {"customer_id": "", "registro_assessoria_lawsuit_id": ""},
+      "processos": [
+        {"numero": "", "parte_contraria": "", "tipo_acao": "", "area": "civel", "advbox_lawsuit_id": ""}
+      ],
+      "demandas_extrajudiciais": [
+        {"assunto": "", "aberta_em": "", "palavras_chave": [], "area": "civel", "advbox_lawsuit_id": "", "encerrada_em": ""}
+      ]
+    }
+  ]
+}
